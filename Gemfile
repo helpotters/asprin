@@ -99,3 +99,5 @@ group :development, :test do
 end
 
 gem "erb2haml", "~> 0.1.5", :group => :development
+
+gem "devise", "~> 4.8"
