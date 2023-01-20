@@ -100,3 +100,5 @@ gem 'erb2haml', '~> 0.1.5', group: :development
 gem 'devise', '~> 4.8'
 
 gem 'jsbundling-rails', '~> 1.1'
+
+gem "letter_opener", "~> 1.8"
