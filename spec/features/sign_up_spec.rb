@@ -21,8 +21,6 @@ RSpec.feature 'Sign Up', type: :feature do
       expect(page.current_path).to eq('/sign_in')
       expect(page).to have_content(/must first sign in/)
     end
-    xit 'sends a confirmation email' do
-    end
     xit 'notifies user to confirm if they try logging in' do
     end
   end
