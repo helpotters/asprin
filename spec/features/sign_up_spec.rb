@@ -18,8 +18,8 @@ RSpec.feature 'Sign Up', type: :feature do
       find('#user_password').fill_in(with: user[:password])
       find('#user_password_confirmation').fill_in(with: user[:password])
       find_button('Sign up').click
+      expect(User.all.count).to eq(1)
       expect(page.current_path).to eq('/sign_in')
-      expect(page).to have_content(/must first sign in/)
     end
     xit 'notifies user to confirm if they try logging in' do
     end

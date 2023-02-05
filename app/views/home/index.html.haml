@@ -1,2 +1,8 @@
 %h1 Home#index
-%p Find me in app/views/home/index.html.haml
+= simple_form_for(@post) do |f|
+  = f.input :post_text, wrapper_html: { id: "post_form" }
+  = f.hidden_field :user_id, value: "#{current_user.id}"
+  = f.button :submit
+- @posts = current_user.posts.all
+#posts
+  = render partial: "posts/post", collection: @posts

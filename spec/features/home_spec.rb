@@ -15,7 +15,7 @@ RSpec.feature 'Home', type: :feature do
       find('#post_form').fill_in(with: post_info)
       find_button('Post').click
 
-      # TODO: expect user post association to go up
+      expect(page).to have_content(post_info)
     end
   end
 end
