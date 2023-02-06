@@ -3,11 +3,13 @@
     .card-body
       .card-title
         Text your personal feed
-      .form-control{ data: { controller: "form" } }
+      .form-control{ data: { controller: "form"} }
         = simple_form_for(@post) do |f|
-          .justify-center.flex{ data: { action: "keydown.enter->form#submit" } }
-            = f.input :post_text, wrapper: false,
-            as: :text, input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black" },
+          .justify-center.flex
+            = f.input :post_text, wrapper: false, as: :text,
+            input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black",
+            data: { action: "keydown.enter->form#submit",
+            "form-target": "input"} },
             placeholder: "What is on your mind?", label: false
             = f.hidden_field :user_id, value: "#{current_user.id}"
             = f.button :submit, class: "hidden", data: { "form-target": "button" }
