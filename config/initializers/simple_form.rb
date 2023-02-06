@@ -76,7 +76,7 @@ SimpleForm.setup do |config|
 
   # Default class for buttons
   config.button_class = 'btn'
-  config.input_class = 'input'
+  config.input_class = 'input input-bordered bg-white text-black'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

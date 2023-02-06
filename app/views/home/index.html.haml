@@ -1,8 +1,16 @@
-%h1 Home#index
-= simple_form_for(@post) do |f|
-  = f.input :post_text, wrapper_html: { id: "post_form" }
-  = f.hidden_field :user_id, value: "#{current_user.id}"
-  = f.button :submit
-- @posts = current_user.posts.all
-#posts
-  = render partial: "posts/post", collection: @posts
+#posting.hero.justify-center
+  .card.items-center
+    .card-body
+      .card-title
+        Text your personal feed
+      .form-control
+        = simple_form_for(@post) do |f|
+          .input-group.justify-center
+            = f.input :post_text, wrapper: false, placeholder: "What is on your mind?", label: false
+            = f.hidden_field :user_id, value: "#{current_user.id}"
+            = f.button :submit, class: "btn"
+- @posts = current_user.posts.all.reverse
+.flex-col.h-screen.justify-center.items-middle.text-center
+  %h1.text-white.text-2xl Your feed
+  .chat.items-center.justify-center.flex-row.chat-start.gap-2.w-auto.px-80#posts
+    = render partial: "posts/post", collection: @posts
