@@ -1,0 +1,4 @@
+.flex-col.h-screen.justify-center.items-middle.text-center
+  %h1.text-white.text-2xl Your feed
+  .chat.items-center.justify-center.flex-row.chat-start.gap-2.w-auto.px-80#posts
+    = render partial: "posts/post", collection: @posts

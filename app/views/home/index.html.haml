@@ -1,20 +1,4 @@
-#posting.hero.justify-center
-  .card.items-center
-    .card-body
-      .card-title
-        Text your personal feed
-      .form-control{ data: { controller: "form"} }
-        = simple_form_for(@post) do |f|
-          .justify-center.flex
-            = f.input :post_text, wrapper: false, as: :text,
-            input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black",
-            data: { action: "keydown.enter->form#submit",
-            "form-target": "input"} },
-            placeholder: "What is on your mind?", label: false
-            = f.hidden_field :user_id, value: "#{current_user.id}"
-            = f.button :submit, class: "hidden", data: { "form-target": "button" }
-- @posts = current_user.posts.all.reverse
-.flex-col.h-screen.justify-center.items-middle.text-center
-  %h1.text-white.text-2xl Your feed
-  .chat.items-center.justify-center.flex-row.chat-start.gap-2.w-auto.px-80#posts
-    = render partial: "posts/post", collection: @posts
+#main
+  = render partial: "posts/form"
+  - @posts = current_user.posts.all.reverse
+  = render partial: "posts/feed", locals: { posts: @posts }
