@@ -1,19 +1,20 @@
 .navbar.bg-base-100
   .flex-1
-    %a.btn.btn-ghost.normal-case.text-xl asprin
-  .flex-none.gap-2
-    .form-control
-      %input.input.input-bordered{:placeholder => "Search", :type => "text"}/
-    .dropdown.dropdown-end
-      %label.btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
-        .w-10.rounded-full
-          %img.bg-white.rounded-full
-      %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
-        %li
-          %a.justify-between
-            Profile
-            %span.badge New
-        %li
-          %a Settings
-        %li
-          %a Logout
+    %a.btn.btn-ghost.normal-case.text-xl{ href: "/"  }
+      asprin
+  - if user_signed_in?
+    .flex-none.gap-2
+      .form-control
+        %input.input.input-bordered{:placeholder => "Search", :type => "text"}/
+      .dropdown.dropdown-end
+        %label.btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
+          .w-10.rounded-full.bg-white
+            %img.bg-white.rounded-full
+        %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
+          %li
+            %a Profile
+          %li
+            %a.justify-between{ href: edit_user_registration_path }
+              Account Settings
+          %li
+            %a{ href: destroy_user_session_path } Logout
