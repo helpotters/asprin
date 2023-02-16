@@ -75,6 +75,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
+  config.input_class = 'input input-bordered'
   config.button_class = 'btn'
 
   # Method used to tidy up errors. Specify any Rails Array method.
