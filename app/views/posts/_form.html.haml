@@ -3,7 +3,7 @@
     .card-body
       .card-title
         Text your personal feed
-      .form-control{ data: { controller: "form"} }
+      .form-control#post_form{ data: { controller: "form"} }
         = simple_form_for(@post) do |f|
           .justify-center.flex
             = f.input :post_text, wrapper: false, as: :text,

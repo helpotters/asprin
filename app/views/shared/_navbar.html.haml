@@ -18,3 +18,5 @@
               Account Settings
           %li
             %a{ href: destroy_user_session_path } Logout
+  - else
+    %a.btn{ href: sign_up_path } Sign up

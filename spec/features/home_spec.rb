@@ -7,7 +7,7 @@ RSpec.feature 'Home', type: :feature do
   before do
     # user is confirmed
     login_as(user)
-    visit root_path
+    visit authenticated_root_path
   end
   context 'Posting' do
     it 'lets user post text to their feed' do

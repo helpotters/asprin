@@ -14,8 +14,4 @@ Rails.application.routes.draw do
       get '/sign_out' => 'users/sessions#destroy', method: :delete
     end
   end
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
 end

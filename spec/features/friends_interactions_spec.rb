@@ -7,7 +7,7 @@ RSpec.feature 'Friends', type: :feature do
 
   before do
     login_as(user)
-    visit '/'
+    visit authenticated_root_path
   end
   xcontext 'See friends' do
     xit 'displays current friends' do

@@ -11,14 +11,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
 
-    p @post
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.prepend(:posts,
                                                   partial: 'posts/post',
                                                   locals: { post: @post })
       end
-      format.html { redirect_to root_path }
+      format.html { redirect_to authenticated_root_path }
     end
   end
 
