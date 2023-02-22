@@ -8,6 +8,8 @@
 #  confirmed_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  first_name             :text
+#  last_name              :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -32,4 +34,12 @@ RSpec.describe User, type: :model do
   subject(:user) { create(:user) }
 
   it { is_expected.to have_many(:posts).dependent(:destroy) }
+
+  describe '#full_name' do
+    let(:named_user) { create(:user, first_name: 'Billy', last_name: 'Jean') }
+
+    it "returns user's full name" do
+      expect(named_user.full_name).to eq('Billy Jean')
+    end
+  end
 end
