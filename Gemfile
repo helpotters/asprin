@@ -104,3 +104,5 @@ gem 'jsbundling-rails', '~> 1.1'
 gem "letter_opener", "~> 1.8"
 
 gem "solargraph", "~> 0.48.0"
+
+gem "annotate", "~> 3.2"
