@@ -11,7 +11,7 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  subject(:friendship) { create(:friendship, :with_two_users) }
+  subject(:friendship) { create(:friendship) }
 
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:friend) }

@@ -10,11 +10,7 @@
 #
 FactoryBot.define do
   factory :friendship do
-    user_id { 1 }
-    friend_id { 1 }
-  end
-  trait :with_two_users do
-    association(:user, factory: :user)
-    association(:friend, factory: :user)
+    association :user, factory: :user
+    association :friend, factory: :user
   end
 end
