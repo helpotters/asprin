@@ -31,6 +31,8 @@ RSpec.describe User, type: :model do
   subject(:user) { create(:user) }
 
   it { is_expected.to have_many(:posts).dependent(:destroy) }
+  it { is_expected.to have_many(:friendships).dependent(:destroy) }
+  it { is_expected.to have_many(:friends) }
 
   it 'has an attached avatar' do
     user.avatar.attach(
