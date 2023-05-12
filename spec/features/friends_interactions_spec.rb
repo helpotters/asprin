@@ -15,7 +15,10 @@ RSpec.feature 'Friends', type: :feature do
       friend = user.friends.first
       expect(page).to have_content(friend.full_name)
     end
-    xit 'does not display a non-friend'
+    it 'does not display a non-friend' do
+      non_friend = create(:user, first_name: 'Bill', last_name: 'Bob')
+      expect(page).to_not have_content(non_friend.full_name)
+    end
   end
   xcontext 'Send friend request'
   xcontext 'See friend requests'
