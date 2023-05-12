@@ -4,7 +4,7 @@
       .card-title
         Text your personal feed
       .form-control#post_form{ data: { controller: "form"} }
-        = simple_form_for(@post) do |f|
+        = simple_form_for Post.new do |f|
           .justify-center.flex
             = f.input :post_text, wrapper: false, as: :text,
             input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black",

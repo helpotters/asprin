@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = current_user.posts.all
-    p @posts
+    @posts = current_user.posts.all.reverse
   end
 
   def create
