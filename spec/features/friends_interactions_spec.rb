@@ -9,8 +9,10 @@ RSpec.feature 'Friends', type: :feature do
     login_as(user)
     visit authenticated_root_path
   end
-  xcontext 'See friends' do
-    xit 'displays current friends' do
+  context 'See friends' do
+    it 'displays current friends' do
+      friend = create(:friendship, user:).friend
+      expect(user.friends.first).to eq(friend)
     end
     xit 'does not display a non-friend'
   end

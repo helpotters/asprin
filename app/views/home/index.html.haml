@@ -3,4 +3,4 @@
     = render partial: "posts/form"
     = render partial: "posts/feed", locals: { posts: @posts }
   .col-span-2#friends
-    = render partial: "friends/list"
+    = render partial: "friends/list", locals: { friends: @friends}
