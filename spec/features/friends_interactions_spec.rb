@@ -7,12 +7,13 @@ RSpec.feature 'Friends', type: :feature do
 
   before do
     login_as(user)
+    create(:friendship, user:).friend
     visit authenticated_root_path
   end
   context 'See friends' do
     it 'displays current friends' do
-      friend = create(:friendship, user:).friend
-      expect(user.friends.first).to eq(friend)
+      friend = user.friends.first
+      expect(page).to have_content(friend.full_name)
     end
     xit 'does not display a non-friend'
   end

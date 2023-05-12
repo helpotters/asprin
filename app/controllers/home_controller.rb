@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @posts = current_user.posts.all.reverse
+    p current_user.friends.all
     @friends = current_user.friends.all
+    @posts = current_user.posts.all.reverse
   end
 end
