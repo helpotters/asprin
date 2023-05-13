@@ -9,9 +9,6 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.1'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
@@ -101,8 +98,8 @@ gem 'devise', '~> 4.8'
 
 gem 'jsbundling-rails', '~> 1.1'
 
-gem "letter_opener", "~> 1.8"
+gem 'letter_opener', '~> 1.8'
 
-gem "solargraph", "~> 0.48.0"
+gem 'solargraph', '~> 0.48.0'
 
-gem "annotate", "~> 3.2"
+gem 'annotate', '~> 3.2'

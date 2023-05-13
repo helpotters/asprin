@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  avatar                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -13,7 +13,7 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  post_id                :integer
+#  post_id                :bigint
 #
 # Indexes
 #
@@ -23,7 +23,7 @@
 #
 # Foreign Keys
 #
-#  post_id  (post_id => posts.id)
+#  fk_rails_...  (post_id => posts.id)
 #
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
