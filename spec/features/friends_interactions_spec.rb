@@ -10,7 +10,7 @@ RSpec.feature 'Friends', type: :feature do
     create(:friendship, user:).friend
     visit authenticated_root_path
   end
-  context 'See friends' do
+  context 'Friends List' do
     it 'displays current friends' do
       friend = user.friends.first
       expect(page).to have_content(friend.full_name)
@@ -20,6 +20,4 @@ RSpec.feature 'Friends', type: :feature do
       expect(page).to_not have_content(non_friend.full_name)
     end
   end
-  xcontext 'Send friend request'
-  xcontext 'See friend requests'
 end
