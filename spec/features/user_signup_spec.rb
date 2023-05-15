@@ -10,7 +10,7 @@ RSpec.feature 'Sign Up', type: :feature do
     }
   end
   before do
-    visit '/sign_up'
+    visit new_user_registration_path
   end
   context 'when valid' do
     it 'signs up new user' do
@@ -24,8 +24,20 @@ RSpec.feature 'Sign Up', type: :feature do
     xit 'notifies user to confirm if they try logging in' do
     end
   end
-  xcontext 'when invalid' do
-    xit 'notifies user of invalid information' do
+  context 'when invalid' do
+    it 'notifies of invalid email' do
+      find('#user_email').fill_in(with: 'bad email')
+      find('#user_password').fill_in(with: user[:password])
+      find('#user_password_confirmation').fill_in(with: user[:password])
+      find_button('Sign up').click
+      expect(page).to have_content('is invalid')
+    end
+    it 'notifies non-matching passwords' do
+      find('#user_email').fill_in(with: user[:email])
+      find('#user_password').fill_in(with: user[:password])
+      find('#user_password_confirmation').fill_in(with: 'Wrong')
+      find_button('Sign up').click
+      expect(page).to have_content("doesn't match Password")
     end
   end
 end
