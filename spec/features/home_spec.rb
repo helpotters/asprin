@@ -18,11 +18,4 @@ RSpec.feature 'Home', type: :feature do
       expect(page).to have_content(post_info)
     end
   end
-  context 'Friend search' do
-    xit 'it searches for friends via Name'
-  end
-  context 'Friends Online' do
-    xit 'displays current friends'
-    xit 'displays Tom from MySpace as a friend'
-  end
 end
