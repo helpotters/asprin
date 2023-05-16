@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Home', type: :feature do
+RSpec.feature 'User Posts to Feed', type: :feature do
   let(:user) { create(:user) }
   before do
     # user is confirmed
