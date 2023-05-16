@@ -6,32 +6,44 @@
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :email, required: true, autofocus: true,
-            label: false,
-            wrapper_html: { class: "input input-bordered" }
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            %p
-              Currently waiting confirmation for: #{resource.unconfirmed_email}
-          = f.input :password,
-            label: false,
-            wrapper_html: { class: "input input-bordered" },
-            hint: "leave it blank if you don't want to change it",
-            hint_html: { class: "label-alt-text" },
-            required: false,
-            input_html: { autocomplete: "new-password" }
-          = f.input :password_confirmation,
-            label: false,
-            wrapper_html: { class: "input input-bordered" },
-            required: false,
-            input_html: { autocomplete: "new-password" }
-          = f.input :current_password,
-            label: false,
-            wrapper_html: { class: "input input-bordered" },
-            hint: "we need your current password to confirm your changes",
-            required: true,
-            input_html: { autocomplete: "current-password" }
-        .form-actions
-          = f.button :submit, "Update"
+          .form-control.gap-2.py-2.px-4
+            = f.input :email, required: true, autofocus: true,
+              label: false,
+              class: "input input-bordered",
+              wrapper: false
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %p
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .form-control.gap-2.py-2.px-4
+            = f.input :password,
+              label: false,
+              class: "input input-bordered",
+              wrapper: false,
+              placeholder: "New Password",
+              hint: "leave it blank if you don't want to change it",
+              hint_html: { class: "label-alt-text" },
+              required: false,
+              input_html: { autocomplete: "new-password" }
+          .form-control.gap-2.py-2.px-4
+            = f.input :password_confirmation,
+              label: false,
+              class: "input input-bordered",
+              placeholder: "Repeat Password",
+              wrapper: false,
+              required: false,
+              input_html: { autocomplete: "new-password" }
+          .form-control.gap-2.py-2.px-4
+            = f.input :current_password,
+              label: false,
+              placeholder: "Current Password",
+              class: "input input-bordered",
+              wrapper: false,
+              hint: "we need your current password to confirm your changes",
+              required: true,
+              input_html: { autocomplete: "current-password" }
+          .form-control.gap-2.py-2.px-4
+            .form-actions
+              = f.button :submit, "Update"
     .card-footer
       %p.link
         Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
