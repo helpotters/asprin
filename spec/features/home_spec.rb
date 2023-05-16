@@ -11,7 +11,7 @@ RSpec.feature 'Home', type: :feature do
   end
   context 'Posting' do
     it 'lets user post text to their feed' do
-      post_info = 'Feeling yeeterinos'
+      post_info = 'There be dragons'
       find('#post_form').fill_in(with: post_info)
       find_button('Post').click
 
