@@ -5,18 +5,19 @@ require 'rails_helper'
 RSpec.feature 'User Notifications', type: :feature do
   let(:user) { create(:user) }
   let(:friend) { create(:user, first_name: 'Mr', last_name: 'Friend') }
-  context 'friend request' do
+  context 'notifications' do
+    # friend is the requester
     let!(:friend_request) { create(:friend_request, user: friend, requested_friend: user) }
-    let!(:notification) { create(:notification, :new, receipent: user) }
+    let!(:notification) { create(:notification, recipient: user) }
 
-    it 'shows friend request' do
+    it 'creating a new notification' do
       sign_in(user)
-
+      # visit home feed
       within('.notifications') do
-        # TODO: Adjust content expectations
         expect(page).to have_content('New Request')
-        expect(page).to have_content('Mr Friend')
+        expect(page).to have_content(friend.full_name)
       end
     end
+    # update, destroy
   end
 end
