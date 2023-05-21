@@ -2,17 +2,17 @@
 #
 # Table name: notifications
 #
-#  id           :bigint           not null, primary key
-#  notice_type  :string           not null
-#  notifiable   :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  notice_id    :bigint           not null
-#  recipient_id :integer
+#  id              :bigint           not null, primary key
+#  notifiable      :string
+#  notifiable_type :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  notifiable_id   :bigint           not null
+#  recipient_id    :integer
 #
 # Indexes
 #
-#  index_notifications_on_notice  (notice_type,notice_id)
+#  index_notifications_on_notice  (notifiable_type,notifiable_id)
 #
 FactoryBot.define do
   factory :notification do
