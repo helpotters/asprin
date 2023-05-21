@@ -14,9 +14,11 @@
 #
 #  index_notifications_on_notice  (notice_type,notice_id)
 #
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
+  it { is_expected.to have_db_column(:notice_id).of_type(:integer) }
+  it { is_expected.to have_db_column(:notice_type).of_type(:string) }
   it { is_expected.to belong_to(:notice) }
   it { is_expected.to belong_to(:recipient) }
 end
