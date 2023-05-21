@@ -12,4 +12,5 @@
 class FriendRequest < ApplicationRecord
   belongs_to :requested_friend, class_name: 'User'
   belongs_to :user
+  has_many :notifications, as: :notifiable
 end
