@@ -103,3 +103,5 @@ gem 'letter_opener', '~> 1.8'
 gem 'solargraph', '~> 0.48.0'
 
 gem 'annotate', '~> 3.2'
+
+gem "heroicon", "~> 1.0"
