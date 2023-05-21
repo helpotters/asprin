@@ -17,8 +17,8 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-  it { is_expected.to have_db_column(:notice_id).of_type(:integer) }
-  it { is_expected.to have_db_column(:notice_type).of_type(:string) }
-  it { is_expected.to belong_to(:notice) }
+  it { is_expected.to have_db_column(:notifiable_id).of_type(:integer) }
+  it { is_expected.to have_db_column(:notifiable_type).of_type(:string) }
+  it { is_expected.to belong_to(:notifiable) }
   it { is_expected.to belong_to(:recipient) }
 end

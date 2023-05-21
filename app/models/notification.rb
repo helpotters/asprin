@@ -15,6 +15,6 @@
 #  index_notifications_on_notice  (notifiable_type,notifiable_id)
 #
 class Notification < ApplicationRecord
-  belongs_to :notice, polymorphic: true
-  belongs_to :recipient, class_name: "User"
+  belongs_to :notifiable, polymorphic: true
+  belongs_to :recipient, class_name: 'User'
 end
