@@ -8,7 +8,6 @@ RSpec.feature 'User Notifications', type: :feature do
   context 'notifications' do
     # friend is the requester
     let!(:friend_request) { create(:friend_request, user: friend, requested_friend: user) }
-    let!(:notification) { create(:notification, recipient: user) }
 
     it 'creating a new notification' do
       sign_in(user)
