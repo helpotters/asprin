@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :notifications
   devise_for :users, path: ''
 
   devise_scope :user do
