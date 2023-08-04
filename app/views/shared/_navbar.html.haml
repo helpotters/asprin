@@ -1,7 +1,7 @@
 .navbar.bg-base-100
   .flex-1
     %a.btn.btn-ghost.normal-case.text-xl{ href: "/"  }
-      asprin
+      = image_tag "asprin.gif", class: "mx-auto w-auto h-10"
   - if user_signed_in?
     .flex-none.gap-2
       .form-control

@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["aqua"],
+    themes: ["light"],
   },
   content: [
     './app/views/**/*.html.haml',

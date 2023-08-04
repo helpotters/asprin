@@ -105,3 +105,7 @@ gem 'solargraph', '~> 0.48.0'
 gem 'annotate', '~> 3.2'
 
 gem "heroicon", "~> 1.0"
+
+gem "omniauth", "~> 2.1"
+
+gem "view_component", "~> 3.5"
