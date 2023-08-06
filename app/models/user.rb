@@ -38,10 +38,23 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: %i[facebook github]
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def self.from_omniauth(auth)
+    logger.debug auth
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      logger.debug user
+      # user.name = auth.info.name
+      # user.nickname = auth.info.nickname
+      # user.image = auth.info.image
+      # user.profile_url = auth.info.urls.GitHub
+      user.email = auth.info.email if auth.info.email.present?
+      user.password = Devise.friendly_token[0, 20]
+    end
   end
 
   def self.create_with_omniauth(auth)

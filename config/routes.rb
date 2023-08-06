@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :posts
   resources :notifications
-  devise_for :users, path: ''
+  devise_for :users, path: '', controllers: {
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
 
   devise_scope :user do
     unauthenticated :user do

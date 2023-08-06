@@ -40,4 +40,19 @@ RSpec.feature 'Sign Up', type: :feature do
       expect(page).to have_content("doesn't match Password")
     end
   end
+  context 'when using facebook to sign up ' do
+    before do
+      mock_oauth_provider(:github)
+    end
+
+    after do
+      OmniAuth.config.mock_auth[:github] = nil
+    end
+
+    it 'can sign up with github' do
+      find('#github').click
+      expect(User.all.count).to eq(1)
+      expect(page.current_path).to eq('/')
+    end
+  end
 end
