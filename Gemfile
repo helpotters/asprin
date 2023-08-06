@@ -104,8 +104,13 @@ gem 'solargraph', '~> 0.48.0'
 
 gem 'annotate', '~> 3.2'
 
-gem "heroicon", "~> 1.0"
+gem 'heroicon', '~> 1.0'
 
-gem "omniauth", "~> 2.1"
+gem 'omniauth-rails_csrf_protection'
 
-gem "view_component", "~> 3.5"
+gem 'omniauth', '~> 2.1'
+
+gem 'view_component', '~> 3.5'
+
+gem 'omniauth-facebook', '~> 9.0'
+gem 'omniauth-github', '~> 2.0.0'
