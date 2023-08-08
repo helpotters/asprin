@@ -7,6 +7,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :text
+#  image                  :string
 #  last_name              :text
 #  provider               :string
 #  remember_created_at    :datetime
@@ -44,15 +45,21 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def full_name=(name)
+    name = name.split(' ')
+    first_name = name[0]
+    last_name = name[1]
+  end
+
   def self.from_omniauth(auth)
     logger.debug auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       logger.debug user
-      # user.name = auth.info.name
+      user.full_name = auth.info.name
       # user.nickname = auth.info.nickname
-      # user.image = auth.info.image
       # user.profile_url = auth.info.urls.GitHub
       user.email = auth.info.email if auth.info.email.present?
+      user.image = auth.info.image
       user.password = Devise.friendly_token[0, 20]
     end
   end
