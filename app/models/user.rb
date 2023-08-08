@@ -38,7 +38,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook github]
+         :omniauthable, omniauth_providers: %i[discord github]
 
   def full_name
     "#{first_name} #{last_name}"

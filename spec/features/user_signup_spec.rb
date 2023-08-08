@@ -43,16 +43,25 @@ RSpec.feature 'Sign Up', type: :feature do
   context 'when using oauth to sign up ' do
     before do
       mock_oauth_provider(:github)
+      mock_oauth_provider(:discord)
     end
 
     after do
       OmniAuth.config.mock_auth[:github] = nil
+      OmniAuth.config.mock_auth[:discord] = nil
     end
 
     it 'can sign up with github' do
       find('#github').click
       expect(User.all.count).to eq(1)
       expect(page.current_path).to eq('/')
+      expect(page).to have_content('Successfully authenticated')
+    end
+    it 'can sign up with discord' do
+      find('#discord').click
+      expect(User.all.count).to eq(1)
+      expect(page.current_path).to eq('/')
+      expect(page).to have_content('Successfully authenticated')
     end
   end
 end
