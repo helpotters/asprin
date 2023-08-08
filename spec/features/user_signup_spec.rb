@@ -40,7 +40,7 @@ RSpec.feature 'Sign Up', type: :feature do
       expect(page).to have_content("doesn't match Password")
     end
   end
-  context 'when using facebook to sign up ' do
+  context 'when using oauth to sign up ' do
     before do
       mock_oauth_provider(:github)
     end
