@@ -5,18 +5,17 @@
   .mt-10.sm:mx-auto.sm:w-full{class: "sm:max-w-[480px]"}
     .bg-white.px-6.py-12.shadow.sm:rounded-lg.sm:px-12
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
-        %form.space-y-6
-          = f.error_notification
-          = render FormInputComponent.new(name: "email", label: "Email", placeholder: "me@example.com", form: f)
-          = render FormInputComponent.new(name: "password", label: "Password", placeholder: "testing", form: f)
-          .flex.items-center.justify-between
-            .form-control.flex-row.items-center
-              = f.check_box :remember_me, class: "checkbox h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600", type: "checkbox", label: false, as: :boolean if devise_mapping.rememberable?
-              %label.ml-3.block.text-sm.leading-6.text-gray-900{for: "remember-me"} Remember me
-            .text-sm.leading-6
-              %a.font-semibold.text-indigo-600.hover:text-indigo-500{href: "#"} Forgot password?
-          %div
-            = f.button :submit, "Log in", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        = f.error_notification
+        = render FormInputComponent.new(name: "email", label: "Email", placeholder: "me@example.com", form: f)
+        = render FormInputComponent.new(name: "password", label: "Password", placeholder: "testing", form: f)
+        .flex.items-center.justify-between
+          .form-control.flex-row.items-center
+            = f.check_box :remember_me, class: "checkbox h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600", type: "checkbox", label: false, as: :boolean if devise_mapping.rememberable?
+            %label.ml-3.block.text-sm.leading-6.text-gray-900{for: "remember-me"} Remember me
+          .text-sm.leading-6
+            %a.font-semibold.text-indigo-600.hover:text-indigo-500{href: "#"} Forgot password?
+        %div
+          = f.button :submit, "Log in", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       %div
         .relative.mt-10
           .absolute.inset-0.flex.items-center{"aria-hidden" => "true"}

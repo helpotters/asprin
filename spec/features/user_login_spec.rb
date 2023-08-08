@@ -10,14 +10,15 @@ RSpec.feature 'Login', type: :feature do
   end
 
   it 'logins with email and password' do
-    fill_in('Email', with: user.email)
-    fill_in('Password', with: user.password)
+    fill_in('user_email', with: user.email)
+    fill_in('user_password', with: user.password)
     click_on('Log in')
     expect(page.current_path).to eq('/')
+    expect(page).to have_content('Signed in successfully')
   end
   it 'returns to login page after failed login' do
-    fill_in('Email', with: 'bad@email.com')
-    fill_in('Password', with: 'bad')
+    fill_in('user_email', with: 'bad@email.com')
+    fill_in('user_password', with: 'bad')
 
     click_on('Log in')
     expect(page.current_path).to eq('/sign_in')
