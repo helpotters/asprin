@@ -1,6 +1,8 @@
-.items-start.align-start.grid.grid-cols-12.gap-2.px-8.p-2
-  .col-span-10#main
-    = render partial: "posts/form"
-    = render partial: "posts/feed", locals: { posts: @posts }
-  .col-span-2#friends
-    = render partial: "friends/list", locals: { friends: @friends}
+= render PanelComponent.new bg_color: "bg-slate-50" do
+  .flex.min-h-full.flex-col
+    .mx-auto.flex.w-full.max-w-7xl.items-start.gap-x-8.px-4.py-10.sm:px-6.lg:px-8
+      = render ColumnComponent.new type: "main" do
+        = render partial: "posts/form"
+        = render partial: "posts/feed", locals: { posts: @posts }
+      = render ColumnComponent.new type: "aside" do
+        = render partial: "friends/list", locals: { friends: @friends}
