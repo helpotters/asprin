@@ -4,7 +4,7 @@
       %li.px-6.py-4.chat.chat-end
         .chat-image.avatar
           .w-10.rounded-full
-            %img.w-8.h-8.rounded-full{ src: friend&.image}
+            = render AvatarComponent.new user: friend, size: "8"
         .chat-header.text-xs
           = friend.full_name
         .chat-bubble.text-sm.py-3.px-4

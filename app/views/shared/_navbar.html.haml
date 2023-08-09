@@ -9,7 +9,7 @@
       .dropdown.dropdown-end
         %label.btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
           .w-10.rounded-full.bg-white
-            %img.w-8.h-8.rounded-full{ src: current_user&.image}
+            = render AvatarComponent.new user: current_user, size: "8"
         %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
           %li
             %a{ href: edit_profile_path } Profile
