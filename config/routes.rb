@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     authenticated :user do
       root to: 'home#index', as: :authenticated_root
       get '/sign_out' => 'users/sessions#destroy', method: :delete
+      get '/edit_profile' => 'users/profiles#edit', as: :edit_profile
+      patch '/update_profile', to: 'users/profiles#update', as: :update_profile
     end
   end
 end
