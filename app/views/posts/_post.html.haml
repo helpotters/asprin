@@ -4,9 +4,9 @@
       %img.w-8.h-8.rounded-full{ src: current_user&.image}
       .flex-col.py-0.h-8.-my-1.align-middle.items-center.gap-2.px-2
         %h2.h-3.text-md.font-bold.pb-1
-          = post.user.first_name.presence || "User"
+          = post.user.full_name.presence || "asprin taker"
         %h4.h-3.text-sm.bg-slate-100.pt-1
-          = post.created_at.strftime("%H, %A")
+          = time_ago_in_words(post.created_at)
     %div
       %p.mt-1
         = post.post_text
