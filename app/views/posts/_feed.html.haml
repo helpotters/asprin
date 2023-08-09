@@ -1,4 +1,4 @@
-.flex-col.h-screen.justify-center.items-middle.text-center
-  %h1.text-white.text-2xl Your feed
-  .chat.items-center.justify-center.flex-row.chat-start.gap-2.w-auto.px-80#posts
-    = render partial: "posts/post", collection: @posts
+.mx-auto.max-w-7xl.px-4.sm:px-6.lg:px-8
+  .max-w-3xl
+    %ul.flex-row.justify-left.divide-y.gap-4#posts{ role: "list" }
+      = render partial: "posts/post", collection: @posts

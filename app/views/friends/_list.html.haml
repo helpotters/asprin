@@ -1,7 +1,11 @@
-.rounded-md.p-2.bg-neutral.flex.justify-start.items-center.flex-grow-0.flex-shrink-0.overflow-hidden{class: "gap-0.5 px-2.5"}
-  - @friends.each do | friend |
-    .bg-black.rounded-full.avatar.flex.flex-col.justify-center.items-start.relative.h-12.w-12
-    .flex.flex-col.justify-center.items-center.flex-grow-0.flex-shrink-0.relative.overflow-hidden{class: "gap-2.5 p-2.5"}
-      %p.flex-grow-0.flex-shrink-0.text-base.font-semibold.text-left.text-black
-        - p friend.full_name
-        = friend.full_name
+.overflow-hidden.rounded-md.border.border-gray-300.bg-white
+  .divide-y.divide-gray-300
+    - @friends.each do | friend |
+      %li.px-6.py-4.chat.chat-end
+        .chat-image.avatar
+          .w-10.rounded-full
+            %img.w-8.h-8.rounded-full{ src: friend&.image}
+        .chat-header.text-xs
+          = friend.full_name
+        .chat-bubble.text-sm.py-3.px-4
+          Friendo
