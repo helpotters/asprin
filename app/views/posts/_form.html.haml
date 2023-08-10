@@ -12,4 +12,4 @@
             "form-target": "input"} },
             placeholder: "What is on your mind?", label: false
             = f.hidden_field :user_id, value: "#{current_user.id}"
-            = f.button :submit, class: "hidden", data: { "form-target": "button" }
+            = f.button :submit, id: "post-button", class: "hidden", data: { "form-target": "button" }
