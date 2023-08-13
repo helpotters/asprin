@@ -6,10 +6,11 @@
       .form-control#post_form{ data: { controller: "form"} }
         = simple_form_for Post.new do |f|
           .justify-center.flex
-            = f.input :post_text, wrapper: false, as: :text,
-            input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black",
-            data: { action: "keydown.enter->form#submit",
-            "form-target": "input"} },
-            placeholder: "What is on your mind?", label: false
+            .form-control
+              = f.input :post_text, wrapper: false, as: :text,
+              input_html: { class: "textarea textarea-bordered textarea-lg bg-white text-black",
+              data: { action: "keydown.enter->form#submit",
+              "form-target": "input"} },
+              placeholder: "What is on your mind?", label: false
             = f.hidden_field :user_id, value: "#{current_user.id}"
-            = f.button :submit, id: "post-button", class: "hidden", data: { "form-target": "button" }
+            =  render FormButtonComponent.new form: f, id: "post_button", visible_label: false, visible_button: false, stimulus_target: "button"
