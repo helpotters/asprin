@@ -1,35 +1,53 @@
-# spec/features/posts_spec.rb
 require 'rails_helper'
 
-RSpec.feature 'Posts', type: :feature do
-  let(:user) { create(:user) }
-  before(:each) do
+RSpec.feature 'Posts', type: :feature, js: :true do
+  scenario 'User creates a post and sees it appear' do
+    # Arrange
+    user = create(:user)
     sign_in user
     visit authenticated_root_path
-  end
-  xscenario 'User creates a post and sees it appear with Turbo Stream' do
-    fill_in 'What is on your mind?', with: 'Hello, world!'
-    find('#post-button').click
-    expect(page).to have_content('Hello, world!')
+    post_content = 'Hello, world!'
+
+    # Act
+    fill_in 'What is on your mind?', with: post_content
+    click_button("Submit Post")
+
+    # Assert
+    expect(page).to have_content(post_content)
   end
 
-  xscenario 'User edits a post and sees the updated content with Turbo Stream' do
-    post = FactoryBot.create(:post, user:)
+  scenario 'User edits a post and sees the updated content' do
+    # Arrange
+    user = create(:user)
+    sign_in user
+    post = create(:post, user: user)
     visit authenticated_root_path
+    updated_content = 'Updated Content'
+
+    # Act
     within "#post_#{post.id}" do
       click_link 'Edit'
+      fill_in 'post_text', with: updated_content
+      click_button 'Update Post'
     end
-    fill_in 'post_text', with: 'Updated Content'
-    click_button 'Update Post'
-    expect(page).to have_content('Updated Content')
+
+    # Assert
+    expect(page).to have_content(updated_content)
   end
 
-  xscenario 'User deletes a post and sees it disappear with Turbo Stream' do
-    post = FactoryBot.create(:post, user:)
+  scenario 'User deletes a post and sees it disappear' do
+    # Arrange
+    user = create(:user)
+    sign_in user
     visit authenticated_root_path
+    post = create(:post, user: user)
+
+    # Act
     within "#post_#{post.id}" do
       click_link 'Delete'
     end
+
+    # Assert
     expect(page).not_to have_content('To be deleted')
   end
 end
