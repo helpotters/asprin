@@ -10,7 +10,7 @@ RSpec.feature 'Posts', type: :feature, js: :true do
 
     # Act
     fill_in 'What is on your mind?', with: post_content
-    click_button("Submit Post")
+    click_button("post_button")
 
     # Assert
     expect(page).to have_content(post_content)
@@ -20,6 +20,7 @@ RSpec.feature 'Posts', type: :feature, js: :true do
     # Arrange
     user = create(:user)
     sign_in user
+    # make post before visiting feed
     post = create(:post, user: user)
     visit authenticated_root_path
     updated_content = 'Updated Content'
@@ -27,9 +28,9 @@ RSpec.feature 'Posts', type: :feature, js: :true do
     # Act
     within "#post_#{post.id}" do
       click_link 'Edit'
-      fill_in 'post_text', with: updated_content
-      click_button 'Update Post'
     end
+    fill_in 'post_text', with: updated_content
+    click_button 'Update'
 
     # Assert
     expect(page).to have_content(updated_content)
@@ -39,8 +40,9 @@ RSpec.feature 'Posts', type: :feature, js: :true do
     # Arrange
     user = create(:user)
     sign_in user
-    visit authenticated_root_path
+    # make post before visiting feed
     post = create(:post, user: user)
+    visit authenticated_root_path
 
     # Act
     within "#post_#{post.id}" do

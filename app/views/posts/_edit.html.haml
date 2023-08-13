@@ -11,6 +11,10 @@
       %div
         %p.mt-1
           = form_with(model: post, data: { turbo_frame: "edit_post_#{post.id}" }) do |form|
-            = form.text_area :post_text, rows: 3, id: "post_text"
-            = form.submit 'Update Post'
+            .form-control
+              = form.label :post_text
+              = form.text_area :post_text, rows: 3, id: "post_text", class: "block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            %div.col-span-full.flex.justify-end.gap-x-6.border-t.px-4.py-4.sm:px-8{class: "border-gray-900/10"}
+              = link_to "Cancel", "/", class: "btn btn-ghost text-sm font-semibold leading-6 text-gray-900"
+              = form.submit 'Update', class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
   .my-2
