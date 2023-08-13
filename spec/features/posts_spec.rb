@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# JS is enabled due to Turbo
 RSpec.feature 'Posts', type: :feature, js: :true do
   scenario 'User creates a post and sees it appear' do
     # Arrange
