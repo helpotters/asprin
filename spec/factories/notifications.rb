@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  notifiable      :string
 #  notifiable_type :string           not null
+#  read_at         :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  notifiable_id   :bigint           not null
