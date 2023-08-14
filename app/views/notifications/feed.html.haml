@@ -1,0 +1,16 @@
+= turbo_frame_tag "all_notifs" do
+  %label.btn.btn-ghost.btn-circle.avatar.bg-slate-50{:tabindex => "0"}
+    - if @notifications.count.zero?
+      = heroicon "bell", options: { class: "h-8 w-8" }
+    - else
+      %span.indicator-item.badge.badge-secondary.badge-xs #{@notifications.count}
+      = heroicon "bell-alert", options: { class: "h-8 w-8" }
+  %ul#notifications.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
+    - if @notifications.count.zero?
+      %p.p-2 There's nothing here :(
+    - else
+      - @notifications.each do |notif|
+        %li
+          %p New Request
+          %p
+            = notif.notifiable.user.full_name

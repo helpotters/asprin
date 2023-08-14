@@ -6,8 +6,13 @@
     .flex-none.gap-2
       .form-control
         %input.input.input-bordered{:placeholder => "Search", :type => "text"}/
-      .dropdown.dropdown-end
-        %label.btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
+      %label.sr-only{ for: "notifications" } Notifications
+      %button.dropdown.dropdown-end.indicator#notifications
+        %turbo-frame{ id: "all_notifs", src: "/notifications/feed" }
+          = heroicon "bell", options: { class: "h-8 w-8" }
+      %label.sr-only{ for: "profile" } Profile
+      .dropdown.dropdown-end#profile
+        .btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
           = render AvatarComponent.new user: current_user, size: "8"
         %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
           %li

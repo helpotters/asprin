@@ -2,21 +2,22 @@
 
 require 'rails_helper'
 
-RSpec.feature 'User Notifications', type: :feature do
-  let(:user) { create(:user) }
-  let(:friend) { create(:user, first_name: 'Mr', last_name: 'Friend') }
-  context 'notifications' do
-    # friend is the requester
-    let!(:friend_request) { create(:friend_request, user: friend, requested_friend: user) }
-
-    it 'creating a new notification' do
+RSpec.feature 'User Notifications', type: :feature, js: true do
+  context 'new notifications' do
+    scenario 'user has unread friend request' do
+      user = create(:user)
+      friend = create(:user, first_name: 'Mr', last_name: 'Friend')
+      friend_request = create(:friend_request, user: friend, requested_friend: user)
       sign_in(user)
+      visit authenticated_root_path
       # visit home feed
-      within('.notifications') do
+
+      # Click dropdown menu
+      click_button("Notifications")
+      within('#all_notifs') do
         expect(page).to have_content('New Request')
         expect(page).to have_content(friend.full_name)
       end
     end
-    # update, destroy
   end
 end

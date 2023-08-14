@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'notifications/destroy'
+  get 'notifications/index'
+  get 'notifications/feed', to: 'notifications#feed'
+  get 'notifications/update'
   resources :posts
   resources :notifications
   devise_for :users, path: '', controllers: {
