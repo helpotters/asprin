@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'search/suggestions'
+  get 'search/index'
   resources :friend_requests
+  post 'search', to: "search#index", as: "search"
+  post 'search/suggestions', to: "search#suggestions", as: "suggestions"
   get 'friend_requests/create'
   get 'friend_requests/destroy'
   get 'friend_requests/update/:id' => "friend_requests#update", as: "accept_friend_request"
