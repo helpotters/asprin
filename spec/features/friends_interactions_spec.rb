@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Friends', type: :feature do
+RSpec.feature 'Friends', type: :feature, js: :true do
   let(:user) { create(:user) }
 
   before do
@@ -30,12 +30,10 @@ RSpec.feature 'Friends', type: :feature do
       # visit home feed
 
 
-      within('#notifications') do
-        click_button("Accept Friend Request")
-      end
-      within("#friends_list") do
-        expect(page).to have_content(friend.full_name)
-      end
+      click_button("Notifications")
+      find("#accept").click
+
+      expect(page).to have_content(friend.full_name)
     end
   end
 end
