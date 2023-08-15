@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    p @post
     render turbo_stream: turbo_stream.replace(
       "post_#{params[:id]}",
       partial: 'posts/edit',

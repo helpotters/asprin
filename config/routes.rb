@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  resources :friend_requests
+  get 'friend_requests/create'
+  get 'friend_requests/destroy'
+  get 'friend_requests/update/:id' => "friend_requests#update", as: "accept_friend_request"
+  get 'friend_requests/destroy/:id' => "friend_requests#destroy", as: "deny_friend_request"
   get 'notifications/destroy'
   get 'notifications/index'
   get 'notifications/feed', to: 'notifications#feed'
   get 'notifications/update'
   resources :posts
   resources :notifications
+  resources :friendships
   devise_for :users, path: '', controllers: {
     omniauth_callbacks: 'omniauth_callbacks'
   }
