@@ -4,8 +4,6 @@
       = image_tag "asprin.gif", class: "mx-auto w-auto h-10"
   - if user_signed_in?
     .flex-none.gap-2
-      .form-control
-        %input.input.input-bordered{:placeholder => "Search", :type => "text"}/
       %label.sr-only{ for: "notifications" } Notifications
       %button.dropdown.dropdown-end.indicator#notifications
         %turbo-frame{ id: "all_notifs", src: "/notifications/feed" }

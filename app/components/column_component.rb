@@ -20,13 +20,13 @@ class ColumnComponent < ViewComponent::Base
   private
 
   def render_aside
-    content_tag :aside, '', class: 'sticky top-8 w-44 shrink-0 lg:block' do
+    content_tag :aside, '', class: 'sticky top-8 w-44 shrink-0 lg:block justify-center mx-auto lg:m-2' do
       content
     end
   end
 
   def render_main
-    content_tag :main, '', class: 'flex-1' do
+    content_tag :main, '', class: 'flex-1 mx-auto' do
       content
     end
   end

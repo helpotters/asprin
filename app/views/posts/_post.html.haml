@@ -1,8 +1,8 @@
-=turbo_frame_tag "post_#{post.id}" do
-  %li.post.mx-auto.max-w-7xl.sm:px-6.lg:px-8.bg-slate-200.rounded-lg.py-4
+= turbo_frame_tag "post_#{post.id}" do
+  %li.post.mx-auto.max-w-7xl.px-6.lg:px-8.bg-slate-200.rounded-lg.py-4
     = link_to 'Edit', edit_post_path(post), data: { turbo_frame: "post_#{post.id}" }
     = link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_frame: "posts" }, confirm: 'Are you sure?'
-    .flex-col.sm:flex
+    .flex-col
       .mr-4.flex-shrink-0.flex.py-2
         = render AvatarComponent.new user: current_user, size: "8"
         .flex-col.py-0.h-8.-my-1.align-middle.items-center.gap-2.px-2
