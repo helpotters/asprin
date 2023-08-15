@@ -116,3 +116,6 @@ gem 'omniauth-facebook', '~> 9.0'
 gem 'omniauth-github', '~> 2.0.0'
 
 gem "omniauth-discord", "~> 1.1"
+
+gem "searchkick", "~> 5.3"
+gem "elasticsearch", "~> 8.9"
