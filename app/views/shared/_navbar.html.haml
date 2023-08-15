@@ -14,6 +14,8 @@
           = render AvatarComponent.new user: current_user, size: "8"
         %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
           %li
+            %p.text-bold.text-sm Signed in as #{current_user.email}
+          %li
             %a{ href: edit_profile_path } Profile
           %li
             %a.justify-between{ href: edit_user_registration_path }
