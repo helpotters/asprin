@@ -29,6 +29,7 @@
 #  fk_rails_...  (post_id => posts.id)
 #
 class User < ApplicationRecord
+  searchkick
   has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
@@ -74,6 +75,6 @@ class User < ApplicationRecord
   end
 
   def online?
-    updated_at > 2.minutes.ago
+    # updated_at > 2.minutes.ago
   end
 end

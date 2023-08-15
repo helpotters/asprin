@@ -4,6 +4,5 @@ class ApplicationController < ActionController::Base
   private
 
   def update_user_online
-    current_user.try :touch
   end
 end
