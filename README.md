@@ -33,6 +33,7 @@
 
 [![how-asprin-works](https://raw.githubusercontent.com/helpotters/asprin/main/early-version.gif)](https://github.com/helpotters/asprin)
 
+</div>
 
 ## What is asprin?
 
