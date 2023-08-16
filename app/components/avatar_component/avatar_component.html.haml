@@ -1,7 +1,7 @@
-%turbo-frame.h-10.w-10.avatar{ class: @online }
-  - if @user.image.nil?
+%turbo-frame{ class: "#{user_status} h-10 w-10 avatar" }
+  - if user_image.nil?
     .avatar.placeholder
       .bg-primary-focus.text-neutral-content.rounded-full.h-10.w-10
-        = @user&.first_name[0]
+        = user_initials
   - else
-    %img.rounded-full{ src: @user&.image, class: "w-#{@size} h-#{@size}"}
+    %img.rounded-full{ src: user_image, class: "w-#{@size} h-#{@size}" }

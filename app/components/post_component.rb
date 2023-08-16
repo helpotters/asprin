@@ -5,5 +5,4 @@ class PostComponent < ViewComponent::Base
     @post = post
     @user = user
   end
-
 end

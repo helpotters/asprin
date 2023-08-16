@@ -1,4 +1,4 @@
-= render PanelComponent.new bg_color: "bg-slate-50" do
+= render PanelComponent.new color: "bg-slate-50", panel: "well", justification: "text-left" do
   .mx-auto.flex.flex-col.lg:flex-row.w-full.max-w-7xl.items-start.gap-x-8.px-4.py-1.sm:px-6.lg:px-8
     = render ColumnComponent.new type: "main" do
       %h1.text-black.font-bold.text-2xl.lg:text-4xl.text-slate-700 Your feed
