@@ -1,0 +1,9 @@
+%turbo-frame#post_form.mx-auto.max-w-7xl.px-4.lg:px-4.rounded-lg.py-2.flex.flex-row.border-1.border-gray-500
+  = render AvatarComponent.new user: @user
+  .flex.w-full.form-control#post_form{ data: { controller: "form"} }
+    = simple_form_for Post.new do |f|
+      .justify-center.flex
+        = render FormInputComponent.new form: f, name: "post_text", label: "Post text", action: "keydown.enter->form#submit", placeholder: "What is on your mind?"
+        = f.hidden_field :user_id, value: "#{@user.id}"
+        =  render FormButtonComponent.new form: f, id: "post_button", stimulus_target: "button"
+.my-4
