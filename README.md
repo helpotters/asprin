@@ -74,7 +74,7 @@ Some potential ideas for **asprin**:
 
 ## Quick Start
 
-**asprin** requires Elasticsearch for the autocomplete user search feature. Thank you to [@Deanout][https://github.com/Deanout], for his tutorial and following docker command to get Elasticsearch up and running quickly:
+**asprin** requires Elasticsearch for the autocomplete user search feature. Thank you to [@Deanout](https://github.com/Deanout), for his tutorial and following docker command to get Elasticsearch up and running quickly:
 
 ```
 docker run -d -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.8
@@ -97,7 +97,7 @@ You can check if its working at [http://localhost:9200](http://localhost:9200). 
 
 👉 Find friends: Search for people you may know or send them a link to sign up! Of course, I'm available to friend as Paul Lemus.
 
-👉 Check out my [LinkedIn][https://linkedin.com/in/helpotters].
+👉 Check out my [LinkedIn](https://linkedin.com/in/helpotters).
 
 
 ## License
