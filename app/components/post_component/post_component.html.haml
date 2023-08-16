@@ -1,0 +1,16 @@
+%turbo-frame{ id: "post_#{@post.id}" }
+  %li.post.mx-auto.max-w-7xl.px-6.lg:px-8.bg-slate-200.rounded-lg.py-4
+    = link_to 'Edit', edit_post_path(@post), data: { turbo_frame: "post_#{@post.id}" }
+    = link_to 'Delete', post_path(@post), data: { turbo_method: :delete, turbo_frame: "posts" }, confirm: 'Are you sure?'
+    .flex-col
+      .mr-4.flex-shrink-0.flex.py-2
+        = render AvatarComponent.new user: @user, size: "8"
+        .flex-col.py-0.h-8.-my-1.align-middle.items-center.gap-2.px-2
+          %h2.h-3.text-md.font-bold.pb-1
+            = @post.user.full_name.presence || "asprin taker"
+          %h4.h-3.text-sm.bg-slate-100.pt-1
+            = time_ago_in_words(@post.created_at)
+      %div
+        %p.mt-1
+          = @post.post_text
+  .my-2
