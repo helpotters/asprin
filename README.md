@@ -1,8 +1,8 @@
 <br/>
 
 <div align="center" style="margin: 30px;">
-<a href="https://refine.dev/">
-  <img src="https://raw.githubusercontent.com/helpotters/asprin/app/assets/images/asprin.gif"   style="width:350px;" align="center" />
+<a href="https://github.com/helpotters/asprin">
+  <img src="https://raw.githubusercontent.com/helpotters/asprin/main/app/assets/images/asprin.gif"   style="width:350px;" align="center" />
 </a>
 <br />
 <br />
@@ -31,7 +31,7 @@
 
 <br/>
 
-[![how-asprin-works](https://raw.githubusercontent.com/helpotters/asprin/app/assets/images/early-version.gif)](https://github.com/helpotters/asprin)
+[![how-asprin-works](https://raw.githubusercontent.com/helpotters/asprin/main/early-version.gif)](https://github.com/helpotters/asprin)
 
 
 ## What is asprin?
