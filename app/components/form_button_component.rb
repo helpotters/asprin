@@ -6,6 +6,7 @@ class FormButtonComponent < ViewComponent::Base
     @form = form
     @id = id
     @visible_label = visible_label
+    @visible_button = visible_button
     @stimulus_target = stimulus_target
   end
 
