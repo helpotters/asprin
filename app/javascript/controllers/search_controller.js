@@ -4,37 +4,30 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["suggestions", "input"]
   connect() {
-    console.log("Search")
   }
 
   suggestions(){
-    console.log("Suggestions")
     const query = this.inputTarget.value;
     const url = this.element.dataset.suggestionsUrl;
 
     clearTimeout(this.timeout);
     this.timeOut = setTimeout(() => {
       this.requestSuggestions(query, url);
-    }, 250);
-
+    }, 250); // checks every 250ms
   }
   requestSuggestions(query, url) {
-    console.log("Request")
     if (query.length === 0 ){
       this.hideSuggestions();
       return;
     }
     this.showSuggestions();
-
-    console.log("Fetching...")
     fetch(url, {
       method: "POST",
       headers: {
-        "Content-TYpe": "application/json",
+        "Content-Type": "application/json",
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
       },
       body: JSON.stringify({query: query}),
-
     }).then(response => {
       response.text().then((html) => {
         document.body.insertAdjacentHTML("beforeend", html);
@@ -43,7 +36,6 @@ export default class extends Controller {
   }
 
   showSuggestions(){
-    console.log("Show")
     this.suggestionsTarget.classList.remove("hidden");
   }
   hideSuggestions(){

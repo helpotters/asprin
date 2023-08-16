@@ -1,5 +1,9 @@
 - if results.any?
-  .absolute.w-full.overflow-y-auto.max-h-60.bg-white.rounded-g.shadow-lg
+  %p
+  .absolute.w-full.overflow-y-auto.max-h-60.bg-white.rounded-g.shadow-lg.z-10
     - results.each do |user|
-      .p-2.border-b.border-gray-300.hover:bg-gray-100
-        = user.full_name
+      .p-4.flex.flex-row.border-b.border-gray-300.hover:bg-gray-100
+        .h-6
+          = render AvatarComponent.new user: user, size: "6"
+        .p-2
+          = user.full_name

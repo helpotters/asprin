@@ -20,7 +20,7 @@ class SearchController < ApplicationController
     if params[:query].blank?
       User.all
     else
-      User.search(params[:query], fields: %i[first_name last_name], operator: 'or', match: :word_start)
+      User.search(params[:query], fields: [:first_name, :last_name], operator: 'or', match: :word_start, misspellings: {below: 3}, limit: 5)
     end
   end
 end

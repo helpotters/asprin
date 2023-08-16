@@ -29,13 +29,14 @@
 #  fk_rails_...  (post_id => posts.id)
 #
 class User < ApplicationRecord
-  searchkick
+  searchkick word_start: %i[first_name last_name], callbacks: :async
+
   has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :friends, through: :friendships, source: :friend
 
-  has_one_attached :avatar
+  # has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
