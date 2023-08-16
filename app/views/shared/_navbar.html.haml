@@ -1,7 +1,8 @@
 .navbar.bg-base-100
   .flex-1
-    %a.btn.btn-ghost.normal-case.text-xl{ href: "/"  }
-      = image_tag "asprin.gif", class: "mx-auto w-auto h-10"
+    %a.btn.btn-ghost.normal-case.text-xl.sm:invisible.md:visible.hover:bg-gray-500{ href: "/"  }
+      = heroicon "home", options: { class: "sm:visible md:invisible md:hidden h-10 mx-auto w-auto" }
+      = image_tag "asprin.gif", class: "mx-auto w-auto h-10 invisible md:visible"
   - if user_signed_in?
     .flex-none.gap-2
       = render partial: "shared/user_search", locals: {results: @results}
