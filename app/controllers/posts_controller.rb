@@ -21,9 +21,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.prepend(:posts,
-                                                  partial: 'posts/post',
-                                                  locals: { post: @post })
+        turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user) )
+        turbo_stream_replace("post_form", PostFormComponent.new( user: current_user) )
+        render turbo_stream: actions
       end
       format.html { redirect_to authenticated_root_path }
     end
@@ -59,5 +59,20 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_text, :user_id)
+  end
+
+  def turbo_stream_append(key, component)
+    @turbo_stream_actions ||= []
+    @turbo_stream_actions << turbo_stream.prepend(key, view_context.render(component))
+  end
+
+  def turbo_stream_replace(key, component)
+    @turbo_stream_actions ||= []
+    @turbo_stream_actions << turbo_stream.replace(key, view_context.render(component))
+  end
+
+  def actions
+    p @turbo_stream_actions
+    @turbo_stream_actions
   end
 end
