@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   end
 
   def feed
-    @notifications = Notification.where(recipient_id: current_user)
+    @notifications = Notification.where(recipient_id: current_user).limit(11)
   end
 
   def update

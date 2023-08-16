@@ -1,9 +1,11 @@
 = turbo_frame_tag "all_notifs" do
   %label.btn.btn-ghost.btn-circle.avatar.bg-slate-50{:tabindex => "0"}
-    - if @notifications.count.zero?
+    - notification_count = @notifications.count
+    - display_count = notification_count > 10 ? "10+" : notification_count
+    - if notification_count.zero?
       = heroicon "bell", options: { class: "h-8 w-8" }
     - else
-      %span.indicator-item.badge.badge-secondary.badge-xs #{@notifications.count}
+      %span.indicator-item.badge.badge-secondary.badge-xs #{display_count}
       = heroicon "bell-alert", options: { class: "h-8 w-8" }
   %ul#notifications.flex.w-full.flex-col.items-center.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
     - if @notifications.count.zero?
