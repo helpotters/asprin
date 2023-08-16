@@ -17,6 +17,9 @@
 #
 FactoryBot.define do
   factory :notification do
-    recipient_id { 1 }
+    recipient_id {1}
+    trait :for_friend_request do
+      association  :notifiable, factory: :friend_request
+    end
   end
 end
