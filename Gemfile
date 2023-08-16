@@ -71,6 +71,9 @@ gem 'simple_form'
 gem 'yard'
 
 group :development do
+  gem "listen"
+  gem "actioncable"
+  gem "lookbook", "~> 2.0"
   gem 'bullet'
   gem 'byebug'
   gem 'pry'
@@ -119,3 +122,4 @@ gem "omniauth-discord", "~> 1.1"
 
 gem "searchkick", "~> 5.3"
 gem "elasticsearch", "~> 8.9"
+

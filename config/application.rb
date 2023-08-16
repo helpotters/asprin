@@ -10,7 +10,9 @@ module Asprin
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
+    config.view_component.preview_paths << "#{Rails.root}/spec/previews"
+    config.lookbook.preview_paths = ["spec/previews"]
+    config.lookbook.preview_layout = "component_preview"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
