@@ -1,9 +1,29 @@
-%turbo-frame#post_form.mx-auto.max-w-7xl.px-4.lg:px-4.rounded-lg.py-2.flex.flex-row.border-1.border-gray-500
-  = render AvatarComponent.new user: @user
-  .flex.w-full.form-control#post_form{ data: { controller: "form"} }
-    = simple_form_for Post.new do |f|
-      .justify-center.flex
-        = render FormInputComponent.new form: f, name: "post_text", label: "Post text", action: "keydown.enter->form#submit", placeholder: "What is on your mind?"
-        = f.hidden_field :user_id, value: "#{@user.id}"
-        =  render FormButtonComponent.new form: f, id: "post_button", stimulus_target: "button"
+%turbo-frame#post_form{ data: { controller: "form"} }
+  = simple_form_for Post.new do |f|
+    .flex.items-center{"aria-orientation" => "horizontal", :role => "tablist"}
+      = render AvatarComponent.new user: @user
+      %button#tabs-1-tab-1.bg-white.text-gray-500.hover:bg-gray-100.hover:text-gray-900.rounded-md.border.border-transparent.px-3.text-sm.font-medium{"aria-controls" => "tabs-1-panel-1", :class => "py-1.5", :role => "tab", :type => "button", "data-action" => "click->form#switchTab", "data-form-target" => "tab", "data-index" => "0"} Write
+      %button#tabs-1-tab-2.bg-white.text-gray-500.hover:bg-gray-100.hover:text-gray-900.ml-2.rounded-md.border.border-transparent.px-3.text-sm.font-medium{"aria-controls" => "tabs-1-panel-2", :class => "py-1.5", :role => "tab", :type => "button", "data-action" => "click->form#switchTab", "data-form-target" => "tab", "data-index" => "1"} Preview
+      #actions.ml-auto.flex.items-center.space-x-5
+        .flex.items-center
+          %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25", "stroke-linecap" => "round"}
+          %span Mention
+        .flex.items-center
+          %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+            %path{:d => "M6 6h.008v.008H6V6z", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+          %span Tag
+    #tabs.mt-2
+      #tabs-1-panel-1.rounded-lg{"aria-labelledby" => "tabs-1-tab-1", :class => "-m-0.5 p-0.5", :role => "tabpanel", :tabindex => "0", "data-form-target" => "panel", "data-index" => "0"}
+        #post_form
+          .justify-center.flex
+            %label.sr-only{:for => "post_text"} Post
+            = f.text_area :post_text, action: "keydown.enter->form#submit", placeholder: "What is on your mind?", rows: 5, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            = f.hidden_field :user_id, value: "#{@user.id}"
+      #tabs-1-panel-2.rounded-lg{"aria-labelledby" => "tabs-1-tab-2", :class => "-m-0.5 p-0.5", :role => "tabpanel", :tabindex => "0", "data-form-target" => "panel", "data-index" => "1"}
+        .border-b
+          .mx-px.mt-px.px-3.pb-12.pt-2.text-sm.leading-5.text-gray-800 Preview content will render here.
+    .mt-2.flex.justify-end
+      =  render FormButtonComponent.new form: f, id: "post_button", stimulus_target: "button"
 .my-4
