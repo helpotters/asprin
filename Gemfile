@@ -123,3 +123,5 @@ gem "omniauth-discord", "~> 1.1"
 gem "searchkick", "~> 5.3"
 gem "elasticsearch", "~> 8.9"
 
+
+gem "redcarpet", "~> 3.6"

@@ -19,12 +19,12 @@
         #post_form
           .justify-center.flex
             %label.sr-only{:for => "post_text"} Post
-            = f.text_area :post_text, action: "keydown.enter->form#submit, keydown->form#renderPreview", placeholder: "What is on your mind?", rows: 5, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", "data-form-target" => "textarea"
+            = f.text_area :post_text, data: { action: "keydown.enter->form#submit keydown->form#renderPreview" }, placeholder: "What is on your mind?", rows: 5, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", "data-form-target" => "textarea"
             = f.hidden_field :user_id, value: "#{@user.id}"
       #tabs-1-panel-2.rounded-lg{"aria-labelledby" => "tabs-1-tab-2", :class => "-m-0.5 p-0.5", :role => "tabpanel", :tabindex => "0", "data-form-target" => "panel", "data-index" => "1"}
         .border-b
           %article.prose
-            %div{"data-form-target" => "previewArea", "data-index" => "1"} Preview content will render here.
+            %div{ class: "prose", "data-form-target" => "previewArea", "data-index" => "1"} Preview content will render here.
     .mt-2.flex.justify-end
       =  render FormButtonComponent.new form: f, id: "post_button", stimulus_target: "button"
 .my-4

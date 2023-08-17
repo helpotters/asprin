@@ -11,6 +11,6 @@
           %h4.h-3.text-sm.bg-slate-100.pt-1
             = time_ago_in_words(@post.created_at)
       %div
-        %p.mt-1
-          = @post.post_text
+        %article.prose.mt-1
+          = markdown(@post.post_text)
   .my-2
