@@ -1,8 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
+import {markdown} from 'markdown';
 
 // Connects to data-controller="form"
 export default class extends Controller {
-  static targets = ["button", "input", "tab", "panel"]
+  static targets = ["button", "input", "tab", "panel", "previewArea", "textarea"]
   connect() {
     console.log("Connected")
     this.initialize();
@@ -23,6 +24,16 @@ export default class extends Controller {
 
   initialize() {
     this.showTab(0); // Show the first tab initially
+    console.log("Continuing")
+    this.renderPreview(); // Render initial preview
+  }
+
+  renderPreview() {
+    console.log("Markdown")
+    const markdownInput = this.textareaTarget.value;
+    const renderedHTML = markdown.toHTML(markdownInput);
+    console.log(renderedHTML)
+    this.previewAreaTarget.innerHTML = renderedHTML;
   }
 
   switchTab(event) {
@@ -31,8 +42,6 @@ export default class extends Controller {
   }
 
   showTab(index) {
-    console.log(this.tabTargets.length)
-    console.log(this.tabTargets.length)
     this.tabTargets.forEach((tab, i) => {
       if (i == index) {
         tab.classList.add("bg-white", "text-gray-900");
