@@ -29,9 +29,8 @@ RSpec.feature 'Friends', type: :feature, js: :true do
       visit authenticated_root_path
       # visit home feed
 
-
-      click_button("Notifications")
-      find("#accept").click
+      click_on("Notifications")
+      click_on("Accept Friend Request")
 
       expect(page).to have_content(friend.full_name)
     end

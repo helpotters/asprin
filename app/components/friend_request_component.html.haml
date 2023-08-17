@@ -5,9 +5,9 @@
     %p.text-sm.font-medium.text-gray-900 #{@friend_request.user.full_name}
     %p.mt-0.5.text-xs.text-gray-500.w-full Wants to connect
     .mt-1.flex
+      %label.sr-only{ for: "accept" } Accept Friend Request
       = link_to(accept_friend_request_path(@friend_request.id), method: :put, remote: :true, class: 'btn btn-sm btn-circle btn-ghost', id: "accept") do
-        %label.sr-only{ for: "accept" } Accept Friend Request
         = heroicon "check-circle", options: { class: "w-10 h-10 text-primary" }
+      %label.sr-only{ for: "decline" } Decline Friend Request
       = link_to(deny_friend_request_path(@friend_request.id), method: :delete, remote: :true, class: 'btn btn-sm btn-circle btn-ghost', id: "decline") do
-        %label.sr-only{ for: "decline" } Decline Friend Request
         = heroicon "x-circle", options: { class: "w-10 h-10 text-secondary" }
