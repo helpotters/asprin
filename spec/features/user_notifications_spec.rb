@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'User Notifications', type: :feature, js: true do
+feature 'user interacts with', js: true do
   context 'new notifications' do
     scenario 'user has unread friend request' do
       user = create(:user)
@@ -15,7 +15,7 @@ RSpec.feature 'User Notifications', type: :feature, js: true do
       # Click dropdown menu
       click_button("Notifications")
       within('#all_notifs') do
-        expect(page).to have_content('New Request')
+        expect(page).to have_content('Wants to connect')
         expect(page).to have_content(friend.full_name)
       end
     end

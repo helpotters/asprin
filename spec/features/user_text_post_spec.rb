@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 # JS is enabled due to Turbo
-RSpec.feature 'Posts', type: :feature, js: :true do
-  scenario 'User creates a post and sees it appear' do
+feature 'user posts text', js: :true do
+  scenario 'creates post' do
     # Arrange
     user = create(:user)
     sign_in user
@@ -17,7 +17,7 @@ RSpec.feature 'Posts', type: :feature, js: :true do
     expect(page).to have_content(post_content)
   end
 
-  scenario 'User edits a post and sees the updated content' do
+  scenario 'edits post' do
     # Arrange
     user = create(:user)
     sign_in user
@@ -37,15 +37,15 @@ RSpec.feature 'Posts', type: :feature, js: :true do
     expect(page).to have_content(updated_content)
   end
 
-  scenario 'User deletes a post and sees it disappear' do
+  scenario 'deletes post' do
     # Arrange
     user = create(:user)
     sign_in user
     # make post before visiting feed
     post = create(:post, user: user)
-    visit authenticated_root_path
 
     # Act
+    visit authenticated_root_path
     within "#post_#{post.id}" do
       click_link 'Delete'
     end

@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.feature 'User profile edit', type: :feature do
-  let(:user) { create(:user) } # Assuming you're using FactoryBot for test data
+feature 'User profile edit' do
 
   scenario 'user updates their profile' do
+    user = create(:user)
     new_first_name = 'New First Name'
     new_last_name = 'New Last Name'
 
