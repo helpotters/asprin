@@ -25,4 +25,7 @@
           %li
             %a{ href: destroy_user_session_path } Logout
   - else
-    %a.btn{ href: new_user_registration_path } Sign up
+    - unless controller_name == 'registrations'
+      %a.btn{ href: new_user_registration_path } Sign up
+    - unless controller_name == 'sessions'
+      %a.btn{ href: new_user_session_path } Log in

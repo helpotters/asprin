@@ -8,6 +8,8 @@
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f|
         %p.mt-2.text-sm.text-red-600
           = f.error_notification
+        = render FormInputComponent.new(name: "first_name", label: "First Name", placeholder: "Tom", form: f)
+        = render FormInputComponent.new(name: "last_name", label: "Last Name", placeholder: "MySpace", form: f)
         = render FormInputComponent.new(name: "email", label: "Email", placeholder: "me@example.com", form: f)
         = render FormInputComponent.new(name: "password", label: "Password", placeholder: "password", form: f)
         = render FormInputComponent.new(name: "password_confirmation", label: "Password Comfirmation", placeholder: "password again", form: f)
