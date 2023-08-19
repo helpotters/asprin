@@ -22,11 +22,10 @@
 <br />
 
 <div align="center">
-
 [![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=flat&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org)
 [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=flat&logo=elasticsearch)
 [![Asprin](https://img.shields.io/github/commit-activity/m/helpotters/asprin)](https://github.com/helpotters/asprin/commits/next)
-
 </div>
 
 <br/>
@@ -39,19 +38,36 @@
 
 **asprin** is a **Ruby on Rails** application that I'm working on to test out some idea basic social media features and also experiment with Rails gems like ViewComponents.  
 
-It uses Hotwire to improve performance and user-experience, especially in reducing intial pageload time after logging in (ie, notifications).  
+It uses Hotwire to improve performance and user-experience, especially in reducing initial page-load time after logging in (ie, notifications).  
 
 
 **asprin** is _ViewComponent-driven_, anything repetition is simplified in the UI, which also helps with driving component design in Figma first.
 
 ## What's Turbo?
 
-`%turbo-frame` allows **asprin** to break up the web page into individual 'sub-pages' that are each individually interacting with the server. `notifications`, `user search` or `posts` are all running separtely from one another. Each section also sends their own network requests, which allows the page to load right away rather than waiting for all of it to come in. If each part took 50ms and there were 4 sections to load, it'd take `200ms` before the page loaded; however, breaking it up into turbo frames, that means it'll `50ms`, or technically less if you put a placeholder in the frame as it loads.
+`%turbo-frame` allows **asprin** to break up the web page into individual 'sub-pages' that are each individually interacting with the server. `notifications`, `user search` or `posts` are all running separately from one another. Each section also sends their own network requests, which allows the page to load right away rather than waiting for all of it to come in. If each part took 50ms and there were 4 sections to load, it'd take `200ms` before the page loaded; however, breaking it up into turbo frames, that means it'll `50ms`, or technically less if you put a placeholder in the frame as it loads.
 
 ### How it affected notifications
 
 The `notifications` consists of a polymorphic relation to multiple 'payloads' while belonging to the user. Upgrading this feature with turbo allows notifications to roll in as the user browses. Building the notifs with `ViewComponents` should also help improve performance over partials as well, and allows me swap in different components depending on the payload model: `FriendRequestComponent` consists of an interactable form while a `Like` notification can just be text.
 
+### Turbo streaming 
+- Friends list turbo frame gets updated live
+- Bugged: the notifications frame reloads the page after interaction. need to fix.
+- The feed is automatically updated upon submitting a post
+- The `post_form` gets `turbo_stream.`replaced with a new form. 
+- How to: two turbo streams in one `render` (you cannot run `render` twice in a row)
+```ruby
+turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user) )
+turbo_stream_replace("post_form", PostFormComponent.new( user: current_user) )
+render turbo_stream: actions
+```
+- **Elasticsearch**-powered user search :: A stimulus controller sends a turbo stream request to update the results as the user types (limited to /250ms/). Just like facebook!
+### Turbo Frames
+I like to think about Turbo frames as individual network requests that run independently. If you're trying to get `@posts`, `@notifications`, `@friends` at the same time, loading the page will be the sum of all those processes. Splitting the page up into frames will divide that lag. If `@notifications` was actually taking a long time, the user would simply have that part still loading rather than holding up the entire page.
+- Notifications dropdown :: GET current notifications 
+- `link_to` swaps :: The posts will swap the frame for editing to give it almost an 'inline-editing' effect
+- I plan on using turbo frames alongside **ViewComponents**
 ## Goal of the project
 
 **asprin** tries to emulate_2008⚡ Facebook_ with basic features like **posts**, **comments** and **searchable friends**. Overall, I'm using this project to learn more about **ViewComponents**, **elasticsearch**, and **Devise**. Potentially, I can add an _interesting spin_ to the application such as **hooking it up to spotify playlists**.
@@ -60,7 +76,7 @@ Some potential ideas for **asprin**:
 
 
 - MySpace-like html input design
-- Music intteractivity
+- Music interactivity
 - Find friends through discord mutuals
 
 ## Key Features
