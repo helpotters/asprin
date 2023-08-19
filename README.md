@@ -2,7 +2,7 @@
 
 <div align="center" style="margin: 30px;">
 <a href="https://github.com/helpotters/asprin">
-  <img src="https://raw.githubusercontent.com/helpotters/asprin/main/app/assets/images/asprin.gif"   style="width:350px;" align="center" />
+  <img src="https://raw.githubusercontent.com/helpotters/asprin/main/app/assets/images/asprin.gif" style="width:350px;" align="center" />
 </a>
 <br />
 <br />
@@ -19,13 +19,14 @@
 <div align="center"><strong>Building 2008 Facebook from scratch.</strong><br> Not just a portfolio-project, but an experiment with variants on the usual social media features.
 
 <br />
-<br />
 
 <div align="center">
-[![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=flat&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org)
-[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=flat&logo=elasticsearch)
-[![Asprin](https://img.shields.io/github/commit-activity/m/helpotters/asprin)](https://github.com/helpotters/asprin/commits/next)
+
+ [![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=flat&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org)
+ [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+ [![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=flat&logo=elasticsearch)](https://elastic.co)
+ [![Asprin](https://img.shields.io/github/commit-activity/m/helpotters/asprin)](https://github.com/helpotters/asprin/commits/next)
+
 </div>
 
 <br/>
