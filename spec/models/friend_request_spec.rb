@@ -18,4 +18,5 @@ RSpec.describe FriendRequest, type: :model do
   it_behaves_like 'notifiable'
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:requested_friend) }
+  it { is_expected.to have_many(:notifications).dependent(:destroy) }
 end
