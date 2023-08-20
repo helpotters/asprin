@@ -35,5 +35,10 @@ FactoryBot.define do
     last_name { 'Last' }
     password { '123456' }
     image { Faker::Avatar.image(size: "50x50", bgset: "bg2") }
+    trait :reindex do
+      after(:create) do |user, _evaluator|
+        user.reindex(refresh: true)
+      end
+    end
   end
 end
