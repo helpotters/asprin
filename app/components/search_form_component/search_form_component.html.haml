@@ -6,4 +6,4 @@
     .form-control
       = form.submit "Search", class: "sr-only"
     #suggestions{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
-      = render partial: "search/suggestions", locals: { results: @results }
+      = render SearchSuggestionComponent.with_collection(@results)

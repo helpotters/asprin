@@ -1,8 +1,0 @@
-.form-control{ data: { controller: "search", action: "keyup->search#suggestions keyup->search#connect", suggestions_url: search_suggestions_path } }
-  = form_with(url: search_path, method: :post, class: "w-44 lg:w-60 flex-none") do |form|
-    .form-control
-      = form.text_field :query, class: "input input-bordered", placeholder: "Search...", autocomplete: "off", data: { search_target: "input", action: "blue->search#hideSuggestions"}
-    .form-control
-      = form.submit "Search", class: "sr-only"
-    #suggestions{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
-      = render partial: "search/suggestions", locals: { results: results }
