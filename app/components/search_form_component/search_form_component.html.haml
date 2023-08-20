@@ -5,5 +5,6 @@
       = form.text_field :query, id: "search", class: "input input-bordered", placeholder: "Search...", autocomplete: "off", data: { search_target: "input", action: "blur->search#hideSuggestions"}
     .form-control
       = form.submit "Search", class: "sr-only"
-    #suggestions{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
-      = render SearchSuggestionComponent.with_collection(@results)
+    %div{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
+      #suggestions
+        = render SearchSuggestionComponent.with_collection(@results)

@@ -60,19 +60,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:post_text, :user_id)
   end
-
-  def turbo_stream_append(key, component)
-    @turbo_stream_actions ||= []
-    @turbo_stream_actions << turbo_stream.prepend(key, view_context.render(component))
-  end
-
-  def turbo_stream_replace(key, component)
-    @turbo_stream_actions ||= []
-    @turbo_stream_actions << turbo_stream.replace(key, view_context.render(component))
-  end
-
-  def actions
-    p @turbo_stream_actions
-    @turbo_stream_actions
-  end
 end

@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["suggestions", "input"]
   connect() {
+    console.log("connecting")
   }
 
   suggestions(){
@@ -36,6 +37,7 @@ export default class extends Controller {
   }
 
   showSuggestions(){
+    console.log("SHowing")
     this.suggestionsTarget.classList.remove("hidden");
   }
   hideSuggestions(){

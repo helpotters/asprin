@@ -3,10 +3,8 @@ class SearchController < ApplicationController
     @results = search_for_users
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream:
-                 turbo_stream.update('suggestions',
-                                     partial: 'search/suggestions',
-                                     locals: { results: @results })
+        turbo_stream_replace("suggestions", SearchSuggestionComponent.new(results: @results) )
+        render turbo_stream: actions
       end
     end
   end
@@ -20,7 +18,7 @@ class SearchController < ApplicationController
     if params[:query].blank?
       User.all
     else
-      User.search(params[:query], fields: [:first_name, :last_name], operator: 'or', match: :word_start, misspellings: {below: 3}, limit: 5)
+      User.search(params[:query], fields: [:first_name, :last_name], operator: "or", match: :word_start, misspellings: { below: 3 }, limit: 5)
     end
   end
 end
