@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AvatarComponent < ViewComponent::Base
+class AvatarComponent < ApplicationComponent
   # `Avatar` represents users in asprin
   #
   # - Set `size` to proportionately adjsut height and width in pixels.

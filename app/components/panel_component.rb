@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-class PanelComponent < ViewComponent::Base
-
+class PanelComponent < ApplicationComponent
   with_collection_parameter :color
 
-  def initialize(panel: 'default', color: 'bg-white', justification: "justify-center text-center")
+  def initialize(panel: "default", color: "bg-white", justification: "justify-center text-center")
     @color = color
     @panel = panel
     @justification = justification
@@ -14,9 +13,9 @@ class PanelComponent < ViewComponent::Base
 
   def call
     case panel
-    when 'default'
+    when "default"
       narrow_constrained
-    when 'well'
+    when "well"
       well
     end
   end

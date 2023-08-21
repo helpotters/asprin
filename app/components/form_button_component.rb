@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # app/components/form_button_component.rb
-class FormButtonComponent < ViewComponent::Base
+class FormButtonComponent < ApplicationComponent
   def initialize(form:, visible_label: true, stimulus_target: nil, id:, visible_button: true)
     @form = form
     @id = id
@@ -34,7 +34,7 @@ class FormButtonComponent < ViewComponent::Base
   end
 
   def render_button_input(f)
-    f.button :submit, id: id, class: "bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 #{visible_button ? '' : 'sr-only'}",
-     data: { "form-target": stimulus_target }
+    f.button :submit, id: id, class: "bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 #{visible_button ? "" : "sr-only"}",
+                      data: { "form-target": stimulus_target }
   end
 end

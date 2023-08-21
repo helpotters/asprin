@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SearchFormComponent < ViewComponent::Base
+class SearchFormComponent < ApplicationComponent
   def initialize(results: [])
     @results = results
   end

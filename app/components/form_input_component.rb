@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FormInputComponent < ViewComponent::Base
+class FormInputComponent < ApplicationComponent
   def initialize(form:, name:, label:, placeholder: nil, action: [])
     @form = form
     @name = name

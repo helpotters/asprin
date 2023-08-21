@@ -4,6 +4,8 @@ class NotificationComponent < ViewComponent::Base
   def initialize(notification:)
     @notif_type = notification.notifiable_type
     @notif = notification.notifiable
+# Notification is a polymorphic model that references related components to appear in the notification dropdown.
+class NotificationComponent < ApplicationComponent
   end
 
   def call
