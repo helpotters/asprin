@@ -4,7 +4,7 @@
     = link_to 'Delete', post_path(@post), data: { turbo_method: :delete, turbo_frame: "posts" }, confirm: 'Are you sure?'
     .flex-col
       .mr-4.flex-shrink-0.flex.py-2
-        = render AvatarComponent.new src: current_user.image, alt: current_user.full_name, size: "16"
+        = render AvatarComponent.new src: current_user.image, alt: current_user.full_name
         .flex-col.py-0.h-8.-my-1.align-middle.items-center.gap-2.px-2
           %h2.h-3.text-md.font-bold.pb-1
             = post.user.full_name.presence || "asprin taker"

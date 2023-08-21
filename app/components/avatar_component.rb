@@ -3,10 +3,11 @@
 class AvatarComponent < ViewComponent::Base
   # `Avatar` represents users in asprin
   #
-  # - Set `size` to proportionately adjsut height and width in pixels
-  #
+  # - Set `size` to proportionately adjsut height and width in pixels.
+  # - Set `shape` to use either a circle or a rounded square.
+  # - Always set `alt`.
   # @accessibility
-  # Images should have text-alt that describe the information or function.
+  # Images should have alt-text  that describe the information or function.
   # Examples of usage:
   # - As a link to a user profile, the alt-text should be `@helpotters profile`
   # rather than `@helpotters`
@@ -15,11 +16,11 @@ class AvatarComponent < ViewComponent::Base
   DEFAULT_SHAPE = :circle
   SHAPE_OPTIONS = [DEFAULT_SHAPE, :square].freeze
 
-  SIZE_OPTIONS = [16, DEFAULT_SIZE, 24, 32, 40, 48, 80].freeze
+  SIZE_OPTIONS = [DEFAULT_SIZE, 16, 24, 32, 40, 48, 80].freeze
 
   def initialize(src:, alt: nil, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
     @href = href
-    @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
+    @size = fetch_or_fallback(SIZE_OPTIONS, size.to_i, DEFAULT_SIZE)
     @system_arguments = deny_args(**system_arguments)
     @shape = set_shape(fetch_or_fallback(SHAPE_OPTIONS, shape, DEFAULT_SHAPE))
     @src = src
@@ -41,16 +42,8 @@ class AvatarComponent < ViewComponent::Base
     class_lists.compact.join(" ")
   end
 
-  def fetch_or_fallback(options, selected_value, fallback_value)
-    if options.include?(selected_value)
-      selected_value
-    else
-      fallback_value
-    end
-  end
-
   def deny_args(**args)
-    allowed_keys = [:tag, :src, :alt, :height, :width, :classes]
+    allowed_keys = [:height, :width, :classes]
     args.select { |key, _| allowed_keys.include?(key) }
   end
 
