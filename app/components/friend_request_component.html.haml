@@ -1,4 +1,4 @@
-.flex.items-start.w-full.p-1
+%turbo-frame.flex.items-start.w-full.p-1{ id: "notif_#{@friend_request.id}", data: { turbo_frame: "friend_request" } }
   .flex-shrink-0.pt-0.5
     = avatar
   .ml-3.w-0.flex.flex-col.flex-grow.text-left.items-start
@@ -6,8 +6,8 @@
     %p.mt-0.5.text-xs.text-gray-500.w-full Wants to connect
     .mt-1.flex
       %label.sr-only{ for: "accept" } Accept Friend Request
-      = link_to(accept_friend_request_path(@friend_request.id), method: :put, remote: :true, class: 'btn btn-sm btn-circle btn-ghost', id: "accept") do
+      = link_to(accept_friend_request_path(@friend_request.id), method: :put, remote: true, class: 'btn btn-sm btn-circle btn-ghost', id: "accept", data: { turbo_method: :post}) do
         = heroicon "check-circle", options: { class: "w-10 h-10 text-primary" }
       %label.sr-only{ for: "decline" } Decline Friend Request
-      = link_to(deny_friend_request_path(@friend_request.id), method: :delete, remote: :true, class: 'btn btn-sm btn-circle btn-ghost', id: "decline") do
+      = link_to(deny_friend_request_path(@friend_request.id), method: :delete, class: 'btn btn-sm btn-circle btn-ghost', id: "decline", data: { turbo_method: :delete }) do
         = heroicon "x-circle", options: { class: "w-10 h-10 text-secondary" }
