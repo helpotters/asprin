@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   after_action :update_user_online, if: :user_signed_in?
   before_action :configure_sign_up_params, if: :devise_controller?
 
-
   def turbo_stream_append(key, component)
     @turbo_stream_actions ||= []
     @turbo_stream_actions << turbo_stream.prepend(key, view_context.render(component))
@@ -19,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def actions
-    p @turbo_stream_actions
     @turbo_stream_actions
   end
 
