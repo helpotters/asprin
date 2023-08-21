@@ -3,7 +3,7 @@
     - @friends.each do | friend |
       %li.px-6.py-4.chat.chat-end
         .chat-image.avatar
-          = render AvatarComponent.new src: friend.image, alt: "your friend: #{friend.full_name}", size: "16"
+          = render AvatarComponent.new src: friend.image, alt: "your friend: #{friend.full_name}"
         .chat-header.text-xs
           = friend.full_name
         .chat-bubble.text-sm.py-3.px-4

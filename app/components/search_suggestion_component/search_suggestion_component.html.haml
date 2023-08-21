@@ -4,6 +4,6 @@
       - @results.each do |user|
         .p-4.flex.flex-row.border-b.border-gray-300.hover:bg-gray-100
           .h-6
-            = render AvatarComponent.new src: user.image, alt: user.full_name, size: "16"
+            = render AvatarComponent.new src: user.image, alt: user.full_name
           .p-2
             = user.full_name
