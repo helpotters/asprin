@@ -1,7 +1,7 @@
 %turbo-frame#post_form{ data: { controller: "form"} }
   = simple_form_for Post.new do |f|
     .flex.items-center{"aria-orientation" => "horizontal", :role => "tablist"}
-      = render AvatarComponent.new user: @user
+      = render AvatarComponent.new src: @user.image, alt: @user.full_name}
       %button#tabs-1-tab-1.bg-white.text-gray-500.hover:bg-gray-100.hover:text-gray-900.rounded-md.border.border-transparent.px-3.text-sm.font-medium{"aria-controls" => "tabs-1-panel-1", :class => "py-1.5", :role => "tab", :type => "button", "data-action" => "click->form#switchTab", "data-form-target" => "tab", "data-index" => "0"} Write
       %button#tabs-1-tab-2.bg-white.text-gray-500.hover:bg-gray-100.hover:text-gray-900.ml-2.rounded-md.border.border-transparent.px-3.text-sm.font-medium{"aria-controls" => "tabs-1-panel-2", :class => "py-1.5", :role => "tab", :type => "button", "data-action" => "click->form#switchTab click->form#renderPreview", "data-form-target" => "tab", "data-index" => "1"} Preview
       #actions.ml-auto.flex.items-center.space-x-5

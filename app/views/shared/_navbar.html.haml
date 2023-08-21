@@ -13,7 +13,7 @@
       %label.sr-only{ for: "profile" } Profile
       .dropdown.dropdown-end#profile
         .btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
-          = render AvatarComponent.new user: current_user, size: "8"
+          = render AvatarComponent.new src: current_user.image, alt: "Profile for #{current_user.full_name}", size: "16"
         %ul.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
           %li
             %p.text-bold.text-sm Signed in as #{current_user.email}

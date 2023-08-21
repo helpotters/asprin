@@ -1,5 +1,5 @@
 %turbo-frame#post_form.mx-auto.max-w-7xl.px-4.lg:px-4.rounded-lg.py-2.flex.flex-row.border-1.border-gray-500
-  = render AvatarComponent.new user: current_user
+  = render AvatarComponent.new src: current_user.image, alt: current_user.full_name
   .flex.w-full.form-control#post_form{ data: { controller: "form"} }
     = simple_form_for Post.new do |f|
       .justify-center.flex
