@@ -56,10 +56,8 @@ class AvatarComponent < ViewComponent::Base
 
   def set_shape(shape)
     case shape
-    when :circle
-      "rounded-full"
-    when :square
-      "rounded-md"
+    when :circle then "rounded-full"
+    when :square then "rounded-md"
     end
   end
 end
