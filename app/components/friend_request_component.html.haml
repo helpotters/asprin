@@ -1,8 +1,8 @@
 .flex.items-start.w-full.p-1
   .flex-shrink-0.pt-0.5
-    = render(AvatarComponent.new(src: @friend_request.user.image, alt: "#{@friend_request.user.full_name}"))
+    = avatar
   .ml-3.w-0.flex.flex-col.flex-grow.text-left.items-start
-    %p.text-sm.font-medium.text-gray-900 #{@friend_request.user.full_name}
+    %p.text-sm.font-medium.text-gray-900 #{@full_name}
     %p.mt-0.5.text-xs.text-gray-500.w-full Wants to connect
     .mt-1.flex
       %label.sr-only{ for: "accept" } Accept Friend Request

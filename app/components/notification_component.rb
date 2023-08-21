@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Notification is a polymorphic model that references related components to appear in the notification dropdown.
+# Change to use polymorphic slot settings.
 class NotificationComponent < ApplicationComponent
   DEFAULT_TYPE = "Info"
 
@@ -29,6 +30,8 @@ class NotificationComponent < ApplicationComponent
   end
 
   def render_friend_request
-    render FriendRequestComponent.new friend_request: @payload
+    render FriendRequestComponent.new friend_request: @payload do |component|
+      component.with_avatar
+    end
   end
 end
