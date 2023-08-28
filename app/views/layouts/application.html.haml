@@ -14,6 +14,8 @@
     :javascript
       hljs.highlightAll();
     = turbo_frame_tag :flash, id: "flash", class: "divide-y divide-gray-300 space-y-3 fixed top-5 left-5"
-
+    - flash.each do |type, msg|
+      - type = :notice if type = "notice"
+      = render partial: "shared/flash", locals: { type: type, message: msg }
     = render 'shared/navbar'
     = yield
