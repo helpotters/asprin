@@ -13,7 +13,7 @@
   %body
     :javascript
       hljs.highlightAll();
-    - flash.each do |type, msg|
-      = msg
+    = turbo_frame_tag :flash, id: "flash", class: "divide-y divide-gray-300 space-y-3 fixed top-5 left-5"
+
     = render 'shared/navbar'
     = yield

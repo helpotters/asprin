@@ -4,11 +4,17 @@
 
 import { application } from "./application"
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import FormController from "./form_controller"
 application.register("form", FormController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MarkdownController from "./markdown_controller"
+application.register("markdown", MarkdownController)
 
 import SearchController from "./search_controller"
 application.register("search", SearchController)

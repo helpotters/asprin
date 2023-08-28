@@ -1,0 +1,6 @@
+%li.overflow-hidden.rounded-md.border.border-gray-300.bg-white{ data: { controller: "flash"} }
+  %div.alert.flex.flex-row.w-80.z-10.items-center.py-3.px-5.rounded-lg{ class: @type_class }
+    .mr-4 #{@message}
+    %button{"data-action" => "flash#dismiss", type: "button"}
+      %svg.h-6.w-6{fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+        %path{d: "M6 18L18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
