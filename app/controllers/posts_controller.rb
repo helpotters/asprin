@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user))
-        turbo_stream_prepend("flash", FlashComponent.new(flash: { notice: "Your post is now on the feed." }))
+        turbo_stream_prepend("flash", FlashComponent.new(type: :success, message: "Your post is now on the feed."))
         turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
         render turbo_stream: actions
       end
@@ -35,7 +35,11 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove("post_#{params[:id]}") }
+      format.turbo_stream do
+        turbo_stream_remove("post_#{params[:id]}")
+        turbo_stream_prepend("flash", FlashComponent.new(type: :info, message: "Post has been deleted."))
+        render turbo_stream: actions
+      end
     end
   end
 
