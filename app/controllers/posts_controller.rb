@@ -7,8 +7,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     render turbo_stream: turbo_stream.replace(
       "post_#{params[:id]}",
-      partial: 'posts/edit',
-      locals: { post: @post }
+      partial: "posts/edit",
+      locals: { post: @post },
     )
   end
 
@@ -21,8 +21,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user) )
-        turbo_stream_replace("post_form", PostFormComponent.new( user: current_user) )
+        turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user))
+        turbo_stream_prepend("flash", FlashComponent.new(flash: { notice: "Your post is now on the feed." }))
+        turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
         render turbo_stream: actions
       end
       format.html { redirect_to authenticated_root_path }
@@ -33,25 +34,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.turbo_stream { render turbo_stream: turbo_stream.remove("post_#{params[:id]}") }
-    end
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      render turbo_stream: turbo_stream.replace(
-        "edit_post_#{params[:id]}",
-        partial: 'posts/post',
-        locals: { post: @post }
-      )
-    else
-      render turbo_stream: turbo_stream.replace(
-        "edit_post_#{params[:id]}",
-        partial: 'posts/edit',
-        locals: { post: @post }
-      )
     end
   end
 
