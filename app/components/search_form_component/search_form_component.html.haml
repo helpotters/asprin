@@ -2,9 +2,9 @@
   = form_with(url: search_path, method: :post, class: "w-44 lg:w-60 flex-none") do |form|
     .form-control
       %label.sr-only{ for: "search" } Search
-      = form.text_field :query, id: "search", class: "input input-bordered", placeholder: "Search...", autocomplete: "off", data: { search_target: "input", action: "blur->search#hideSuggestions"}
+      = form.text_field :query, id: "search", class: "input input-bordered", placeholder: "Search...", autocomplete: "off", data: { search_target: "input", action: ""}
     .form-control
       = form.submit "Search", class: "sr-only"
     %div{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
-      #suggestions
+      %div#suggestions
         = render SearchSuggestionComponent.with_collection(@results)
