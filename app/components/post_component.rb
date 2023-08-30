@@ -3,8 +3,8 @@
 class PostComponent < ApplicationComponent
   include ApplicationHelper
 
-  def initialize(post:, user:)
+  def initialize(post:)
     @post = post
-    @user = user
+    @user = post.user
   end
 end

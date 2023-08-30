@@ -18,7 +18,9 @@
           %li
             %p.text-bold.text-sm Signed in as #{current_user.email}
           %li
-            %a{ href: edit_profile_path } Profile
+            %a{ href: show_profile_path(current_user.id) } Profile
+          %li
+            %a{ href: edit_profile_path } Edit Profile
           %li
             %a.justify-between{ href: edit_user_registration_path }
               Account Settings

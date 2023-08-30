@@ -3,4 +3,4 @@
     = render PostFormComponent.new user: current_user
     %ul.flex-row.justify-left.divide-y.gap-4#posts{ role: "list" }
       %turbo-frame#posts
-        = render PostComponent.with_collection(@posts, user: current_user)
+        = render PostComponent.with_collection(@posts)

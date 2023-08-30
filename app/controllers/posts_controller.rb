@@ -13,7 +13,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = current_user.posts.all.reverse
+    @user = current_user
+    @posts = Post.where(user_id: @user.friends).or(Post.where(user_id: @user))
   end
 
   def create
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        turbo_stream_append("posts", PostComponent.new(post: @post, user: current_user))
+        turbo_stream_prepend("posts", PostComponent.new(post: @post))
         turbo_stream_prepend("flash", FlashComponent.new(type: :success, message: "Your post is now on the feed."))
         turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
         render turbo_stream: actions
