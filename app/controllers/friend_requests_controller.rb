@@ -1,5 +1,11 @@
 class FriendRequestsController < ApplicationController
   def create
+    @requested_friend = User.find(params[:id])
+    FriendRequest.create(user: current_user, requested_friend: @requested_friend)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: remove_request }
+      format.html { redirect_to show_profile_path(params[:id]) }
+    end
   end
 
   def destroy
