@@ -31,14 +31,9 @@
 FactoryBot.define do
   factory :user do
     sequence(:email) { |n| Faker::Internet.email }
-    first_name { 'First' }
-    last_name { 'Last' }
-    password { '123456' }
+    first_name { "First" }
+    last_name { "Last" }
+    password { "123456" }
     image { Faker::Avatar.image(size: "50x50", bgset: "bg2") }
-    trait :reindex do
-      after(:create) do |user, _evaluator|
-        user.reindex(refresh: true)
-      end
-    end
   end
 end

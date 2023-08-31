@@ -2,6 +2,7 @@
 
 class SearchFormComponentPreview < ViewComponent::Preview
   def default
-    render(SearchFormComponent.new)
+    user = FactoryBot.create(:user)
+    render(SearchFormComponent.new) { |c| c.with_suggestion(results: [user]) }
   end
 end
