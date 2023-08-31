@@ -5,7 +5,8 @@
       = image_tag "asprin.gif", class: "mx-auto w-auto h-10 invisible md:visible"
   - if user_signed_in?
     .flex-none.gap-2
-      = render SearchFormComponent.new
+      = render SearchFormComponent.new do | component |
+        = component.with_suggestion(results: [])
       %label.sr-only{ for: "notifications" } Notifications
       %button.dropdown.indicator#notifications
         %turbo-frame.dropdown.dropdown-hover.dropdown-end{ id: "all_notifs", src: "/notifications/feed" }
