@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     @results = search_for_users
     respond_to do |format|
       format.turbo_stream do
-        turbo_stream_replace("suggestions", SearchSuggestionComponent.new(results: @results) )
+        turbo_stream_replace("suggestions", SearchSuggestionComponent.new(results: @results))
         render turbo_stream: actions
       end
     end

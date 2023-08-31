@@ -1,6 +1,6 @@
 %turbo-frame#suggestions{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
   - if @results.any?
-    %turbo-frame#suggestions.absolute.w-full.overflow-y-auto.max-h-60.bg-white.rounded-lg.shadow-lg.z-10
+    %turbo-frame#suggestion.absolute.w-full.overflow-y-auto.max-h-60.bg-white.rounded-lg.shadow-lg.z-10
       %ul
         - @results.each do |user|
           %li

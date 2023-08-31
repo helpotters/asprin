@@ -6,5 +6,6 @@
     .form-control
       = form.submit "Search", class: "sr-only"
     %div{ data: { "search-target": "suggestions", action: "mousedown->search#childClicked" } }
-      %div#suggestions
-        = render SearchSuggestionComponent.with_collection(@results)
+      %div#search-results
+        - suggestions.each do | suggestion |
+          = suggestion
