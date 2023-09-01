@@ -123,3 +123,5 @@ gem "searchkick", "~> 5.3"
 gem "elasticsearch", "~> 8.9"
 
 gem "redcarpet", "~> 3.6"
+
+gem "sidekiq", "~> 7.1"
