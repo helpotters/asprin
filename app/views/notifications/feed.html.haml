@@ -8,7 +8,5 @@
       %span.indicator-item.badge.badge-secondary.badge-xs #{display_count}
       = heroicon "bell-alert", options: { class: "h-8 w-8" }
   %ul#notifications.flex.w-full.flex-col.items-center.mt-3.p-2.shadow.menu.menu-compact.dropdown-content.bg-base-100.rounded-box.w-52{:tabindex => "0"}
-    - if @notifications.count.zero?
-      %p.p-2 There's nothing here :(
-    - else
-      = render NotificationComponent.with_collection(@notifications)
+    %p.only:block.hidden.p-2 There's nothing here :(
+    = render NotificationComponent.with_collection(@notifications)
