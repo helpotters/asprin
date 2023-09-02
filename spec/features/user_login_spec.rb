@@ -1,35 +1,35 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-feature 'Login'do
+feature "Login", js: true do
   let(:user) { create(:user) }
 
   background do
     visit unauthenticated_root_path
   end
 
-  context 'with valid credentials' do
-    scenario 'logs in with email and password' do
-      fill_in('user_email', with: user.email)
-      fill_in('user_password', with: user.password)
-      click_on('Log in')
+  context "with valid credentials" do
+    scenario "logs in with email and password" do
+      fill_in("user_email", with: user.email)
+      fill_in("user_password", with: user.password)
+      click_on("Log in")
 
-      expect(page).to have_current_path('/')
-      expect(page).to have_content('Signed in successfully')
+      expect(page).to have_current_path("/")
+      expect(page).to have_content("Signed in successfully")
     end
 
-    scenario 'returns to login page after failed login' do
-      fill_in('user_email', with: 'bad@email.com')
-      fill_in('user_password', with: 'bad')
-      click_on('Log in')
+    scenario "returns to login page after failed login" do
+      fill_in("user_email", with: "bad@email.com")
+      fill_in("user_password", with: "bad")
+      click_on("Log in")
 
-      expect(page).to have_current_path('/sign_in')
+      expect(page).to have_current_path("/sign_in")
     end
   end
 
-  context 'when using OAuth' do
-    shared_examples 'log in with' do |provider|
+  context "when using OAuth" do
+    shared_examples "log in with" do |provider|
       scenario "#{provider}" do
         mock_oauth_provider(provider)
         find("##{provider}").click
@@ -39,7 +39,7 @@ feature 'Login'do
       end
     end
 
-    it_can 'log in with', :github
-    it_can 'log in with', :discord
+    it_can "log in with", :github
+    it_can "log in with", :discord
   end
 end

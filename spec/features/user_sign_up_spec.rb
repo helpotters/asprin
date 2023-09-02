@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-feature "user signs up" do
+feature "user signs up", js: true do
   background do
     visit new_user_registration_path
   end
