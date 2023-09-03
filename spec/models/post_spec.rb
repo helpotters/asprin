@@ -16,8 +16,9 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:post_text) }
 end
