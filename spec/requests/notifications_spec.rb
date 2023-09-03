@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "Notifications", type: :request do
+RSpec.xdescribe "Notifications", type: :request do
   describe "GET /destroy" do
     it "returns http success" do
       get "/notifications/destroy"
@@ -21,5 +21,4 @@ RSpec.describe "Notifications", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
 end

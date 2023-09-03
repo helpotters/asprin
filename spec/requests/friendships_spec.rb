@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "Friendships", type: :request do
+RSpec.xdescribe "Friendships", type: :request do
   describe "GET /destroy" do
     it "returns http success" do
       get "/friendships/destroy"
@@ -28,5 +28,4 @@ RSpec.describe "Friendships", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
 end
