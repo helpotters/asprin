@@ -25,7 +25,6 @@ Rails.application.routes.draw do
       # Resources
       resources :posts
       resources :friend_requests
-      resources :notifications
       resources :friendships
 
       # User's notification feed
