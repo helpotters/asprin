@@ -44,6 +44,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @post = @user.posts.find(params[:id])
+
+    if @post.update(post_params)
+      turbo_stream_replace("edit_post_#{params[:id]}", PostComponent.new(post: @post))
+      turbo_stream_prepend("flash", FlashComponent.new(type: :success, message: "Post updated!"))
+      render turbo_stream: actions
+    else
+      @post.post_text = params[:post_text]
+      turbo_stream_replace("edit_post_#{params[:id]}", partial: "posts/edit", locals: { post: @post })
+      turbo_stream_prepend("flash", FlashComponent.new(type: :error, message: "No dice! Please check for any errors."))
+      render turbo_stream: actions
+    end
+  end
+
   private
 
   def post_params
