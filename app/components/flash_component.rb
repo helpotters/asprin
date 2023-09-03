@@ -2,11 +2,11 @@
 
 class FlashComponent < ApplicationComponent
   TYPES = {
-    success: "alert-success",
-    error: "alert-danger",
-    warning: "alert-warning",
-    info: "alert-info",
-    notice: "alert",
+    success: "success",
+    error: "error",
+    warning: "warning",
+    info: "info",
+    notice: "neutral",
   }
 
   DEFAULT_TYPE = :notice
