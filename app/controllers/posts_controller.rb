@@ -21,13 +21,22 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
 
     respond_to do |format|
-      format.turbo_stream do
-        turbo_stream_prepend("posts", PostComponent.new(post: @post))
-        turbo_stream_prepend("flash", FlashComponent.new(type: :success, message: "Your post is now on the feed."))
-        turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
-        render turbo_stream: actions
+      if @post.save
+        format.turbo_stream do
+          turbo_stream_prepend("posts", PostComponent.new(post: @post))
+          turbo_stream_prepend("flash", FlashComponent.new(type: :success, message: "Your post is now on the feed."))
+          turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
+          render turbo_stream: actions
+        end
+        format.html { redirect_to authenticated_root_path }
+      else
+        format.turbo_stream do
+          turbo_stream_prepend("flash", FlashComponent.new(type: :error, message: "Can't post that. Please check the errors!"))
+          turbo_stream_replace("post_form", PostFormComponent.new(user: current_user))
+          render turbo_stream: actions
+        end
+        format.html { redirect_to authenticated_root_path }
       end
-      format.html { redirect_to authenticated_root_path }
     end
   end
 
