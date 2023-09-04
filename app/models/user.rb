@@ -36,7 +36,7 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
-  # has_one_attached :avatar
+  has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def full_name=(name)
-    name = name.split(' ')
+    name = name.split(" ")
     first_name = name[0]
     last_name = name[1]
   end
@@ -69,9 +69,9 @@ class User < ApplicationRecord
 
   def self.create_with_omniauth(auth)
     create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      user.name = auth['info']['name']
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
     end
   end
 
