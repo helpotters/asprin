@@ -135,3 +135,5 @@ gem "redcarpet", "~> 3.6"
 gem "sidekiq", "~> 7.1"
 
 gem "cancancan", "~> 3.5"
+
+gem "simplecov", "~> 0.22.0"
