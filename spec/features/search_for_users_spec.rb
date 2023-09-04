@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "User Search Integration", type: :feature, js: true do
+feature "User Search Integration", js: true do
   it "displays search suggestions when typing in the search box" do
     user = create(:user)
     other_user = create(:user, first_name: "Yee")
