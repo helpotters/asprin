@@ -1,4 +1,8 @@
 .form-control.gap-2.w-full.flex.mx-auto
+  .mt-2
+    - if @form.object.errors.any?
+      %p.text-red-600.mt-2
+        = @form.object.errors.full_messages_for(@name).join(", ")
   = @form.input @name,
     wrapper: false,
     label: false,
@@ -7,3 +11,6 @@
     placeholder: @placeholder,
     input_html: { autocomplete: "current-password", class: "block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", data: { action: @action, "form-target": "input"  } }
 .mt-2
+  - if @form.object.errors.any?
+    %p.text-red-600.mt-2
+      = @form.object.errors.full_messages_for(@name).join(", ")
