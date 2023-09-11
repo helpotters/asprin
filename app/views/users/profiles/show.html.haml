@@ -8,10 +8,11 @@
       .mt-6.sm:flex.sm:min-w-0.sm:flex-1.sm:items-center.sm:justify-end.sm:space-x-6.sm:pb-1
         .mt-6.min-w-0.flex-1.sm:hidden.md:block
           %h1.truncate.text-2xl.font-bold.text-gray-900 #{@user.full_name}
-        .mt-6.flex.flex-col.justify-stretch.space-y-3.sm:flex-row.sm:space-x-4.sm:space-y-0
-          %label.sr-only{ for: "send friend request" } Accept Friend Request
-          = link_to(send_friend_request_path(@user.id), method: :get, remote: true, class: 'inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', id: "send friend request", data: { turbo_method: :get}) do
-            = heroicon "user-plus", options: { class: "h-5 w-5 fill-slate-400" }
-            %span Add Friend
+        - unless @user == current_user
+          %turbo-frame#add_friend.mt-6.flex.flex-col.justify-stretch.space-y-3.sm:flex-row.sm:space-x-4.sm:space-y-0
+            %label.sr-only{ for: "send friend request" } Accept Friend Request
+            = link_to(send_friend_request_path(@user.id), method: :get, remote: true, class: 'inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', id: "send friend request", data: { turbo_method: :get}) do
+              = heroicon "user-plus", options: { class: "h-5 w-5 fill-slate-400" }
+              %span Add Friend
     .mt-6.hidden.min-w-0.flex-1.sm:block.md:hidden
       %h1.truncate.text-2xl.font-bold.text-gray-900 #{@user.full_name}
