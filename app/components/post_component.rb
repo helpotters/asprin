@@ -2,6 +2,7 @@
 
 class PostComponent < ApplicationComponent
   include ApplicationHelper
+  delegate :can?, :cannot?, to: :helpers
 
   def initialize(post:)
     @post = post

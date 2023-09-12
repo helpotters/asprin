@@ -28,7 +28,8 @@
 #
 #  fk_rails_...  (post_id => posts.id)
 #
-require 'rails_helper'
+require "rails_helper"
+require "cancan/matchers"
 
 RSpec.describe User, type: :model do
   subject(:user) { create(:user) }
@@ -38,19 +39,34 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many(:friendships).dependent(:destroy) }
   it { is_expected.to have_many(:friends) }
 
-  it 'has an attached avatar' do
+  it "has an attached avatar" do
     user.avatar.attach(
-      io: File.open(Rails.root.join('spec/support/assets/avatar.png')),
-      filename: 'avatar.png'
+      io: File.open(Rails.root.join("spec/support/assets/avatar.png")),
+      filename: "avatar.png",
     )
     expect(user.avatar).to be_attached
   end
 
-  describe '#full_name' do
-    let(:named_user) { create(:user, first_name: 'Billy', last_name: 'Jean') }
+  context "#full_name" do
+    let(:named_user) { create(:user, first_name: "Billy", last_name: "Jean") }
 
     it "returns user's full name" do
-      expect(named_user.full_name).to eq('Billy Jean')
+      expect(named_user.full_name).to eq("Billy Jean")
+    end
+  end
+
+  context "abilities regarding posts" do
+    it "can only delete their own posts" do
+      user = create(:user)
+      ability = Ability.new(user)
+      expect(ability).to be_able_to(:destroy, Post.new(user: user))
+      expect(ability).not_to be_able_to(:destroy, Post.new)
+    end
+    it "can only edit their own posts" do
+      user = create(:user)
+      ability = Ability.new(user)
+      expect(ability).to be_able_to(:edit, Post.new(user: user))
+      expect(ability).not_to be_able_to(:edit, Post.new)
     end
   end
 end
