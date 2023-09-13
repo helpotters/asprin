@@ -36,7 +36,7 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
-  has_one_attached :avatar
+  # has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
