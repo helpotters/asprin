@@ -33,6 +33,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
@@ -77,5 +78,9 @@ class User < ApplicationRecord
 
   def online?
     # updated_at > 2.minutes.ago
+  end
+
+  def friends_with?(other_user)
+    friends.include?(other_user)
   end
 end

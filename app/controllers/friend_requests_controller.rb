@@ -1,7 +1,9 @@
 class FriendRequestsController < ApplicationController
   def create
     @requested_friend = User.find(params[:id])
-    FriendRequest.create(user: current_user, requested_friend: @requested_friend)
+
+    FriendRequest.create(user: current_user, requested_friend: @requested_friend) unless current_user.friends_with?(@requested_friend)
+    FriendRequest.create(user: @requested_friend, requested_friend: current_user) unless @requested_friend.friends_with?(user)
     respond_to do |format|
       format.turbo_stream { render turbo_stream: remove_request }
       format.html { redirect_to show_profile_path(params[:id]) }
@@ -19,8 +21,6 @@ class FriendRequestsController < ApplicationController
 
   def update
     @friend_request = FriendRequest.find(params[:id])
-    p @friend_request.user
-    p @friend_request.requested_friend
     Friendship.create(friend: @friend_request.user, user: @friend_request.requested_friend)
     @friend_request.destroy
     respond_to do |format|
